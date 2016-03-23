@@ -1,0 +1,13 @@
+<ion-view title="Following">
+  <ion-content class="has-header">
+  	<div class="foodie-box has-follow-action" ng-repeat="followedUser in following" ng-if="checkIfMe(followedUser.foodict_ID)">
+  		<img ng-cache ng-src="{{followedUser.foodict_image}}" class="profpic" ng-click="openProfile(followedUser.foodict_ID)">
+		<b ng-click="openProfile(followedUser.foodict_ID)">{{followedUser.foodict_username}}</b><br/>
+		<span class="name" ng-click="openProfile(followedUser.foodict_ID)">{{followedUser.foodict_first_name}} {{followedUser.foodict_last_name}}</span>
+
+	    <span class="profile-follow-action follow" ng-if="!followedUser.isFollowed && followedUser.follow_status == 0" ng-click="followThis(followedUser)"><i></i></span>
+        <span class="profile-follow-action following" ng-if="followedUser.isFollowed && followedUser.follow_status == 1" ng-click="unfollowThis(followedUser, 'Unfollow')"><i></i></span>
+        <span class="profile-follow-action pending" ng-if="followedUser.isFollowed && followedUser.follow_status == 2" ng-click="unfollowThis(followedUser,  'Cancel Request')"><i></i></span>
+	</div>
+  </ion-content>
+</ion-view>

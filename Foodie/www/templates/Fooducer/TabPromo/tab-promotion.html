@@ -1,0 +1,160 @@
+<ion-view title="Promotion">
+  <ion-content class="has-header white">
+    <!-- <div class="padding" ng-repeat="promotion in promotions">
+        <img ng-cache ng-src="{{promotion.offer_image}}" class="profpic">
+        {{promotion.offer_ID}} <br />
+        {{promotion.offer_title}} <br />
+        {{promotion.offer_text}} <br />
+        {{promotion.offer_details}} <br />
+        {{promotion.offer_expiry}} <br />
+        {{promotion.offer_max}} <br />
+        {{promotion.offer_availed}} <br />
+        {{promotion.offer_savings}} <br />
+        {{promotion.offer_claim_from}} <br />
+        {{promotion.offer_claim_to}} <br />
+        {{promotion.offer_amount}} <br />
+    </div> -->
+    <div class="block-icon" ng-if="(promotions.length == 0 || promotions == null) && promotions != undefined">
+        <i class="icon ion-ios7-bell"></i><br/>
+        <h4>No Promotion.</h4> 
+        Promotions can increase your sales and can attract more customers!
+        <div class="block-icon-button" ng-click="createPromotion()">Create one now!</div class="block-icon-button">
+    </div>
+    <div ng-repeat="promotion in promotions">
+        <div class="promotion-image-wrapper">
+            <img ng-cache class="offer-image" ng-src="{{promotion.offer_image}}">
+            <div class="end-promo-button" ng-click="endPromotion()">END PROMO</div>
+        </div>
+        <div class="promotion-header">
+            <b class="title" ng-bind="promotion.offer_title"></b>
+            <p ng-bind="promotion.offer_text">This holidays season, pamper yourselves with these chewy and chunky cookies made especially for cold weathers. Buy a dozen of christmas cookies and get a free dozen. Grab it while it last.</p>
+        </div>
+        <div class="promotion-detail">            
+            <b>In detail:</b><br/>
+                <!-- <div class="detail"><i class="bullet"></i>Voucher is valid for a P1000-worth Gift Certificate valid on food and drinks at P.F. Chang’s for P699</div> -->
+                <div class="detail" ng-repeat="detail in promotion.offer_details" ng-if="detail.trim().length > 0"><i class="bullet"></i>{{detail}}</div>
+                <!-- <div class="detail"><i class="bullet"></i>Unlimited vouchers may be purchased and used per visit/redemption</div>
+                <div class="detail"><i class="bullet"></i>Voucher is not valid for use on party packages, event and catering.</div>
+                <div class="detail"><i class="bullet"></i>Any unused amount will not be refunded; anything in excess of its value shall be paid directly to the merchant.</div>
+                <div class="detail"><i class="bullet"></i>Operating Hours: Sunday to Thursday, 11:00AM to 11:00PM & Friday to Saturday, 11:00AM to 1:00AM</div> -->
+            </p>
+        </div>
+        <div class="list list-inset coupon-status">
+            <div class="item">
+                <b>Remaining coupon: </b> {{promotion.offer_max - promotion.offer_availed}}
+            </div>
+            <div class="item">
+                <b>Remaining time: </b>  <span time-remaining="{{promotion.offer_expiry}}"></span>
+            </div>  
+            <div class="item">
+                <b>Claim from: </b> <span datetime="{{promotion.offer_claim_from}}"></span>
+            </div>            
+            <div class="item">
+                <b>Claim until: </b> <span datetime="{{promotion.offer_claim_to}}"></span>
+            </div>           
+            <div class="item">
+                <b>Amount: </b> {{promotion.offer_amount}} Foodie Points
+            </div>
+        </div>
+        <div class="foodie-divider-xxs"></div>
+    </div>
+    <div ng-if="promotions[0].availers.length > 0 && promotions[0].availers != null">
+        <div class="item item-divider">Persons who availed</div>
+        <div class="foodie-box" ng-class="{'has-button' : foodict.isClaimed}" ng-repeat="foodict in promotions[0].availers">
+            <img ng-cache ng-src="{{foodict.foodict_image}}" class="profpic">
+            <b>{{foodict.user_name}}</b><br/>
+            <span class="name"><span datetime="{{foodict.voucher_bought_date}}"></span></span>
+            <a class="button button-icon icon ion-checkmark-circled foodie-assertive action-button right" ng-if="foodict.isClaimed"></a>
+        </div>
+    </div>  <!-- 
+    <div ng-if="promotions == null || promotions.length == 0">
+        <i class="button button-icon icon ion-plus" ng-click="createPromotion()"></i> No active promotion. Create one now!
+    </div> -->
+  </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-view title="FOODIE">
+  <ion-content class="has-header padding">
+    <h1>Home</h1>
+    <button class="button button-positive" ng-click="logout()">logout</button>    
+    <a class="button button-positive" href="#/tab/home/followers">Followers</a>    
+    <a class="button button-positive" href="#/tab/home/following">Following</a>
+    <div class="list list-inset">
+        <div class="item">          
+            <img ng-src="{{profileDetails.foodict_image}}" class="profpic"><br />
+            <label ng-bind="profileDetails.foodict_ID"></label><br />
+            <label ng-bind="profileDetails.user_ID"></label><br />        
+            <label ng-bind="profileDetails.foodict_username"></label><br />
+            <label ng-bind="profileDetails.foodict_first_name"></label><br />
+            <label ng-bind="profileDetails.foodict_middle_name"></label><br />
+            <label ng-bind="profileDetails.foodict_last_name"></label><br />
+            <label ng-bind="profileDetails.foodict_isMale"></label><br />
+            <label ng-bind="profileDetails.foodict_contact"></label><br />
+            <label ng-bind="profileDetails.foodict_country"></label><br />
+            <label ng-bind="profileDetails.foodict_city"></label><br />
+            <label ng-bind="profileDetails.foodict_foodie_points"></label><br />
+            <label ng-bind="profileDetails.user_email"></label>
+        </div>
+    </div>
+  </ion-content>
+</ion-view> -->

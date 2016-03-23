@@ -1,0 +1,29 @@
+<ion-view title="Archives">
+  <ion-content class="has-header archive-padding white">
+      <div class="list archive-search">
+        <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" placeholder="Search archives" ng-model="searchFilter">
+        </label>
+      </div>
+      <!-- <div class="archive-wrapper" ng-repeat="archive in archives | filter: searchFilter" ng-click="goTo(archive.offer_ID)">
+          <img ng-cache ng-src="{{archive.offer_image}}">
+          <div class="overlay"></div>
+          <div class="details">
+              <b>{{archive.offer_title}}</b><br>
+              <span>{{archive.totalClaimedCount}} out of {{archive.totalBoughtCount}} claimed</span>
+          </div>
+      </div> -->
+      <div class="foodie-box-thumbnail" ng-repeat="archive in archives | filter: searchFilter" ng-click="goTo(archive.offer_ID)">
+        <img class="thumbnail" ng-cache ng-src="{{archive.offer_image}}"></img>
+        <b class="title" ng-bind="archive.offer_title"></b>
+        <p class="description" ng-bind="archive.offer_text"></p>
+        <div class="details-wrapper">
+          <div class="detail">Ended: <span datetime="{{archive.offer_expiry}}"></span></div>
+          <div class="detail">Claimed: {{archive.totalClaimedCount}} coupons</div>
+          <div class="detail">Bought: {{archive.totalBoughtCount}} coupons</div>          
+          <div class="detail">Earned: {{archive.foodiePointsEarned}} points</div>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>

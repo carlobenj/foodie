@@ -1,0 +1,148 @@
+<ion-view>
+  <ion-content class="has-header">
+    <div class="fooducer-profile-header-wrapper">
+        <div class="fooducer-profile-featured-image-wrapper">
+            <img ng-cache class="fooducer-profile-featured-image" ng-src="{{profileDetails.fooducer_image}}"></img>
+        </div>
+        <ion-slide-box>
+            <ion-slide>
+                <div class="fooducer-slide-profile">
+                    <div class="fooducer-profile-wrapper">
+                        <div class="fooducer-spacer">
+                        </div>
+                        <img ng-cache class="fooducer-profile-picture" ng-src="{{profileDetails.fooducer_image}}"></img>
+                        <div class="fooducer-spacer">
+                        </div>
+                    </div>
+                    <div class="fooducer-company" ng-bind="profileDetails.fooducer_company"></div>
+                    <div class="user-name" ng-bind="profileDetails.user_name"></div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="fooducer-slide-about">
+                    <div class="fooducer-about-content">
+                        {{profileDetails.fooducer_about}}
+                    </div>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+    </div>
+    <div class="list fooducer-detail white"> 
+        <div class="foodie-divider-xs white"></div>                
+        <div class="fooducer-detail-bar" ng-if="profileDetails.fooducer_fb != null">
+            <i class="detail-icon ion-ios7-telephone"></i>
+            <span ng-bind="'Contact us on ' + profileDetails.fooducer_contact"></span>
+        </div>     
+        <div class="fooducer-detail-bar" ng-if="profileDetails.fooducer_establishment_address != null">
+            <i class="detail-icon ion-map"></i>
+            <span ng-bind="profileDetails.fooducer_establishment_address"></span>
+        </div>
+        <div id="foodictFooducerProfileMap" class="post-detail-map" ng-show="profileDetails.fooducer_location_latitude != null"></div>       
+    </div> 
+    <div class="item item-divider fooducer-profile-divider"><div>OTHER ACCOUNTS</div></div>
+    <div class="list fooducer-detail other-accounts white">            
+        <div class="fooducer-detail-bar" ng-if="profileDetails.fooducer_fb != null">
+            <i class="detail-icon ion-social-facebook"></i>
+            <span ng-bind="profileDetails.fooducer_fb"></span>
+        </div>                       
+        <div class="fooducer-detail-bar" ng-if="profileDetails.fooducer_twitter != null">
+            <i class="detail-icon ion-social-twitter"></i>
+            <span ng-bind="profileDetails.fooducer_twitter"></span>
+        </div>                  
+        <div class="fooducer-detail-bar" ng-if="profileDetails.fooducer_ig != null">
+            <i class="detail-icon ion-social-instagram-outline"></i>
+            <span ng-bind="profileDetails.fooducer_ig"></span>
+        </div>                      
+        <div class="fooducer-detail-bar" ng-if="profileDetails.fooducer_website != null">
+            <i class="detail-icon ion-android-earth"></i>
+            <span ng-bind="profileDetails.fooducer_website"></span>
+        </div>       
+    </div>   
+  </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-view title="FOODIE">
+  <ion-content class="has-header padding">
+    <h1>Home</h1>
+    <button class="button button-positive" ng-click="logout()">logout</button>    
+    <a class="button button-positive" href="#/tab/home/followers">Followers</a>    
+    <a class="button button-positive" href="#/tab/home/following">Following</a>
+    <div class="list list-inset">
+        <div class="item">          
+            <img ng-src="{{profileDetails.foodict_image}}" class="profpic"><br />
+            <label ng-bind="profileDetails.foodict_ID"></label><br />
+            <label ng-bind="profileDetails.user_ID"></label><br />        
+            <label ng-bind="profileDetails.foodict_username"></label><br />
+            <label ng-bind="profileDetails.foodict_first_name"></label><br />
+            <label ng-bind="profileDetails.foodict_middle_name"></label><br />
+            <label ng-bind="profileDetails.foodict_last_name"></label><br />
+            <label ng-bind="profileDetails.foodict_isMale"></label><br />
+            <label ng-bind="profileDetails.foodict_contact"></label><br />
+            <label ng-bind="profileDetails.foodict_country"></label><br />
+            <label ng-bind="profileDetails.foodict_city"></label><br />
+            <label ng-bind="profileDetails.foodict_foodie_points"></label><br />
+            <label ng-bind="profileDetails.user_email"></label>
+        </div>
+    </div>
+  </ion-content>
+</ion-view> -->

@@ -1,0 +1,9 @@
+<ion-view title="Bites" ng-controller="HomeBitersCtrl">
+  <ion-content class="has-header foodie-comment-area">
+  	<div class="foodie-box" ng-repeat="foodict in biters" ng-click="openProfile(foodict.foodict_ID)">
+		<img ng-cache ng-src="{{foodict.foodict_image}}" class="profpic">
+		<b>{{foodict.foodict_username}}</b><br/>
+		<span class="name">{{foodict.foodict_first_name}} {{foodict.foodict_last_name}}</span>
+	</div>
+  </ion-content>
+</ion-view>

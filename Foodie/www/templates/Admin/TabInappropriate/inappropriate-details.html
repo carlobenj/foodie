@@ -1,0 +1,40 @@
+<ion-view title="Inappropriate post">
+  <ion-content class="has-header white">
+  		<div class="foodie-divider-xxs"></div>
+
+
+  		<!--TYPE 0 -->
+  		<div ng-if="inappropriate.report_type == 1" >	
+  			<!-- <div class="foodie-box no-border">
+				<img ng-cache ng-src="{{inappropriate.source_foodict_image}}" />  		
+
+				  	<b ng-click="">{{inappropriate.source_foodict_username}}</b> {{inappropriate.report_description}}.
+
+				<span class="timestamp" timeago="{{inappropriate.report_date}}"></span>
+			</div> -->	  	
+	    	<div class="foodie-box-thumbnail no-border">
+	          <img class="thumbnail" ng-cache ng-src="{{inappropriate.post_image}}"></img>
+	          <b class="title" ng-bind="inappropriate.post_title"></b><b class="title" ng-if="inappropriate.post_title == null">No Title</b>
+	          <p class="description" ng-bind="inappropriate.post_text"></p><p class="description" ng-if="inappropriate.post_text == null"> No description.</p>
+	          <span class="spam-stamp">Last <span datetime="{{inappropriate.report_date}}"></span> · <span>{{inappropriate.reporters.length}} reporter(s)</span></span>
+	        </div>
+	  		<div class="report-actions">
+	  			<span class="report-action-button" ng-click="penalize(inappropriate.report_ID, inappropriate.report_source_item_ID, 1, inappropriate.bitesCount)">Penalize {{inappropriate.bitesCount}}FP</span>
+	  			<span class="report-action-button" ng-click="delete(inappropriate.report_ID, inappropriate.report_source_item_ID, 1)">Delete item</span>
+	  			<span class="report-action-button" ng-click="ignore(inappropriate.report_ID, inappropriate.report_source_item_ID, 1)">Ignore</span>
+	  		</div>
+  		</div>
+
+
+  		<!--REPORTERS -->
+  		<div ng-if="inappropriate.reporters.length > 0 && inappropriate.reporters != null">
+		<div class="item item-divider item-divider-admin">Persons who reported this</div>
+			<div class="foodie-box has-timestamp" ng-repeat="foodict in inappropriate.reporters">
+		        <img ng-cache ng-src="{{foodict.foodict_image}}" class="profpic">
+		        <b>{{foodict.foodict_username}}</b>
+		        {{foodict.report_description}}
+		        <span class="timestamp" timeago="{{foodict.report_date}}"></span>
+		    </div>
+		</div>
+  </ion-content>
+</ion-view>

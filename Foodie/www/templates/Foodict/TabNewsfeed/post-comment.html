@@ -1,0 +1,85 @@
+<ion-view title="Comments" ng-controller="CommentCtrl">
+
+  <ion-content class="has-header foodie-comment-area">
+  	<ion-list>
+  		<ion-item class="item foodie-box has-timestamp" ng-repeat="comment in comments" item="comment">
+		    <img ng-cache ng-src="{{comment.foodict_image}}" ng-click="openProfile(comment.foodict_ID)"/>  		
+
+		  		<b ng-click="openProfile(comment.foodict_ID)">{{comment.foodict_username}} </b>
+		  		{{comment.comment_content}}
+
+		  		<span class="timestamp" timeago="{{comment.comment_date}}"></span>
+			<!--BUTTONS ON SWIPE-->
+		    <ion-option-button class="button-balanced comment-options" ng-if="reportEnabled(comment.foodict_ID)" ng-click="reportThis(comment)">
+		    	<i class="icon ion-flag"></i><br /><span>Report</span>
+		    </ion-option-button>
+    		<ion-option-button class="button-assertive comment-options" ng-if="deleteEnabled(comment.foodict_ID)" ng-click="deleteThis(comment)">
+		      	<i class="icon ion-android-close"></i><br /><span>Delete</span>
+		    </ion-option-button>
+		    <ion-reorder-button></ion-reorder-button>
+	  	</ion-item>
+	</ion-list>
+
+
+
+
+
+	<!-- <img ng-cache ng-src="{{comment.foodict_image}}" ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')"/>  		
+
+		  		<b ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')">{{comment.foodict_username}}</b><br/>
+		  		{{comment.comment_content}}
+
+		  		<span class="timestamp" timeago="{{comment.comment_date}}"></span> -->
+
+
+
+
+
+
+
+
+
+
+
+	<!-- <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
+
+        <ion-item ng-repeat="comment in comments" 
+                  item="item"
+                  href="#/item/{{item.id}}">
+          Item {{ item.id }}
+          <ion-delete-button class="ion-minus-circled" 
+                             ng-click="onItemDelete(item)">
+          </ion-delete-button>
+          <ion-option-button class="button-assertive"
+                             ng-click="edit(item)">
+            Edit
+          </ion-option-button>
+          <ion-option-button class="button-calm"
+                             ng-click="share(item)">
+            Share
+          </ion-option-button>
+          <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
+        </ion-item>
+
+      </ion-list> -->
+
+   <!--  <div class="item item-avatar" ng-repeat="comment in comments">
+		<img ng-cache ng-src="{{comment.foodict_image}}" class="profpic">
+		<div>
+			<div class="foodie-comment-username" ng-bind="comment.foodict_username">Carlo Colubio</div>
+			<div class="foodie-comment-time" timeago="{{comment.comment_date}}"></div>
+		</div>
+		<br>
+		<p class="foodie-comment" ng-bind="comment.comment_content">
+		Fusce id efficitur augue, finibus rutrum elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam at metus rutrum, auctor nisl ac, aliquam sem. Cras viverra, sapien at pulvinar maximus, massa felis dictum tellus, sed facilisis metus urna a nibh.
+		</p>
+	</div>	 -->
+  </ion-content>
+
+  <ion-footer-bar class="foodie-comment-box item-input-inset">
+	  <label class="item-input-wrapper foodie-comment-wrapper">
+	    <textarea class="foodie-textarea-small" maxlength="150" placeholder="Add a comment..." ng-model="new_comment"></textarea>	
+	  </label>
+	  <button class="button button-icon foodie-circled-button ion-paper-airplane" ng-class="{'inactive-button': new_comment == ''}" ng-click="postNewComment()"></button>
+  </ion-footer-bar>
+</ion-view>

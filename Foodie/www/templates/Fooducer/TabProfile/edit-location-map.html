@@ -1,0 +1,22 @@
+<ion-view title="General Information">
+  <ion-content class="has-header white">
+  	<div class="list">
+
+  	  <div class="item item-divider">
+    	Location Map
+  	  </div>
+  	  <label class="item item-input">
+	    <span class="input-label">Longitude</span>
+	    <input type="text" placeholder="" ng-model="profileDetails.fooducer_location_longitude">
+	  </label>
+	  
+  	  <label class="item item-input">
+	    <span class="input-label">Longitude</span>
+	    <input type="text" placeholder="" ng-model="profileDetails.fooducer_location_latitude">
+	  </label>
+	</div>  
+
+	<button class="button button-full button-assertive foodie-button-assertive" ng-click="saveChanges(profileDetails, 4)">Save</button>
+
+  </ion-content>
+</ion-view>

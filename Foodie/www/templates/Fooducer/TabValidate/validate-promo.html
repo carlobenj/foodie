@@ -1,0 +1,118 @@
+<ion-view>
+  <ion-content class="has-header white">  
+    <div class="validate-pane">
+        <div class="validate-button" ng-show="!isValidating" ng-click="validateCoupon()">
+            <i class="icon ion-qr-scanner"></i>
+            <div class="text">TAP TO VALIDATE COUPON</div>
+        </div>
+        <div class="validate-avatar" ng-show="isValidating">
+            <img ng-cache ng-src="{{validating_foodict.foodict_image}}"></img>
+            <div class="validate-status" ng-show="!isDone"><i class="icon ion-loading-d"></i>Validating coupon...</div>     
+            <div class="validate-status" ng-show="status == 1 && isDone"><i class="icon ion-checkmark balanced"></i> {{status_text}}</div>            
+            <div class="validate-status" ng-show="status > 1 && isDone"><i class="icon ion-close foodie-assertive"></i> {{status_text}}</div>                   
+            <div class="done-button" ng-show="isDone" ng-click="doneValidating()">DONE</div>
+        </div>
+
+    </div>
+    <div class="item item-icon-right validate-show-details" ng-click="openCouponDetails(promotion.offer_ID)">
+        Show coupon details
+        <i class="icon ion-chevron-right icon-accessory"></i>
+    </div>
+    <div class="foodie-divider-xs"></div>
+    <div ng-if="promotion.availers.length > 0 && promotion.availers != null">
+        <div class="item item-divider">Persons who availed</div>
+        <div class="foodie-box" ng-class="{'has-button' : foodict.isClaimed}" ng-repeat="foodict in promotion.availers">
+            <img ng-cache ng-src="{{foodict.foodict_image}}" class="profpic">
+            <b>{{foodict.user_name}}</b><br/>
+            <span class="name">
+                <span ng-if="!foodict.isClaimed" datetime="{{foodict.voucher_bought_date}}"></span>
+                <span ng-if="foodict.isClaimed">
+                    <span ng-if="foodict.voucher_claim_date == null">Claimed</span> 
+                    <span ng-if="foodict.voucher_claim_date != null">Claimed on <span datetime="{{foodict.voucher_claim_date}}"></span></span>    
+                </span>
+            </span>
+            <a class="button button-icon icon ion-checkmark-circled balanced action-button right" ng-if="foodict.isClaimed"></a>
+        </div>
+    </div> 
+  </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-view title="FOODIE">
+  <ion-content class="has-header padding">
+    <h1>Home</h1>
+    <button class="button button-positive" ng-click="logout()">logout</button>    
+    <a class="button button-positive" href="#/tab/home/followers">Followers</a>    
+    <a class="button button-positive" href="#/tab/home/following">Following</a>
+    <div class="list list-inset">
+        <div class="item">          
+            <img ng-src="{{profileDetails.foodict_image}}" class="profpic"><br />
+            <label ng-bind="profileDetails.foodict_ID"></label><br />
+            <label ng-bind="profileDetails.user_ID"></label><br />        
+            <label ng-bind="profileDetails.foodict_username"></label><br />
+            <label ng-bind="profileDetails.foodict_first_name"></label><br />
+            <label ng-bind="profileDetails.foodict_middle_name"></label><br />
+            <label ng-bind="profileDetails.foodict_last_name"></label><br />
+            <label ng-bind="profileDetails.foodict_isMale"></label><br />
+            <label ng-bind="profileDetails.foodict_contact"></label><br />
+            <label ng-bind="profileDetails.foodict_country"></label><br />
+            <label ng-bind="profileDetails.foodict_city"></label><br />
+            <label ng-bind="profileDetails.foodict_foodie_points"></label><br />
+            <label ng-bind="profileDetails.user_email"></label>
+        </div>
+    </div>
+  </ion-content>
+</ion-view> -->

@@ -1,0 +1,229 @@
+<ion-view title="Notifications" ng-controller="NotificationCtrl">
+  <ion-content class="has-header" ng-class="{'white' : AllNotifications.length == 0 || AllNotifications == undefined}">
+  	<div class="block-icon" ng-if="AllNotifications.length == 0">
+  		<i class="icon ion-ios7-bell"></i><br/>
+  		<h4>No notifications yet.</h4> 
+  		We don't have notifications for you now.
+  	</div>
+  	<div ng-repeat="noti in AllNotifications">  
+
+  			<!--ADMINISTRATIVE-->
+		    <div class="foodie-box has-timestamp" ng-class="{'has-image' : noti.admin_noti_type <= 122}" ng-if="noti.notification_type == 0" >
+		  		<i class="icon ion-alert-circled admin-alert"></i> 		  		
+		  		<img ng-cache ng-if="noti.admin_noti_type <= 122" class="notification-image" ng-src="{{noti.post_image}}"/>
+
+		  			<!--111 - POST INAPPROPRIATE DELETED-->
+		    		<span ng-if="noti.admin_noti_type == 111">
+		    			Hi <span class="bold-pantone">{{noti.target_username}}</span>, some users reported your post titled <span class="highlight">{{noti.post_title}}</span>. After a thorough review we decided to delete your post for it violated the Terms of Use of Foodie. Please be careful next time. 
+		    		</span>
+
+		    		<!--112 - POST INAPPROPRIATE PENALTY-->
+		    		<span ng-if="noti.admin_noti_type == 112">
+		    			Hi <span class="bold-pantone">{{noti.target_username}}</span>, some users reported your post titled <span class="highlight">{{noti.post_title}}</span>. After a thorough review we decided to <span ng-if="noti.penalty > 0">penalize you with {{noti.penalty}} Foodie Point(s)</span><span ng-if="noti.penalty == 0">delete it</span> because your post violated the Terms of Use of Foodie. Please be careful next time. 
+		    		</span>
+
+		    		<!--121 - POST SPAM DELETED-->
+		    		<span ng-if="noti.admin_noti_type == 121">
+		    			Hi <span class="bold-pantone">{{noti.target_username}}</span>, some users reported your post titled <span class="highlight">{{noti.post_title}}</span>. After a thorough review we have agreed that your post is a spam so we decided to delete it for it violated the Terms of Use of Foodie. Please be careful next time. 
+		    		</span>
+
+		    		<!--122 - POST SPAM PENALTY-->
+		    		<span ng-if="noti.admin_noti_type == 122">
+		    			Hi <span class="bold-pantone">{{noti.target_username}}</span>, some users reported your post titled <span class="highlight">{{noti.post_title}}</span>. After a thorough review we have agreed that your post is a spam so we decided to <span ng-if="noti.penalty > 0">penalize you with {{noti.penalty}} Foodie Point(s)</span><span ng-if="noti.penalty == 0">delete it</span> because it violated the Terms of Use of Foodie. Please be careful next time. 
+		    		</span>
+
+
+
+		    		<!--211 - COMMENT OFFENSIVE DELETED-->
+		    		<span ng-if="noti.admin_noti_type == 211">
+		    			Hi <span class="bold-pantone">{{noti.target_username}}</span>, some users reported your comment <span class="italic">"{{noti.comment_content}}"</span> on post titled <span class="highlight">{{noti.post_title}}</span>. After a thorough review we have agreed that your comment is offensive so we decided to delete it because it violated the Terms of Use of Foodie. Please be careful next time. 
+		    		</span>
+
+		    		<!--212 - COMMENT OFFENSIVE PENALTY-->
+		    		<span ng-if="noti.admin_noti_type == 212">
+		    			Hi <span class="bold-pantone">{{noti.target_username}}</span>, some users reported your comment <span class="italic">"{{noti.comment_content}}"</span> on post titled <span class="highlight">{{noti.post_title}}</span>. After a thorough review we have agreed that your comment is offensive so we decided to penalize you with {{noti.penalty}} Foodie Points because it violated the Terms of Use of Foodie. Please be careful next time. 
+		    		</span>
+
+
+
+		    		<!--221 - COMMENT SPAM DELETED-->
+		    		<span ng-if="noti.admin_noti_type == 221">
+		    			Hi <span class="bold-pantone">{{noti.target_username}}</span>, some users reported your comment <span class="italic">"{{noti.comment_content}}"</span> on post titled <span class="highlight">{{noti.post_title}}</span>. After a thorough review we have agreed that your comment is a spam so we decided to delete it because it violated the Terms of Use of Foodie. Please be careful next time. 
+		    		</span>
+
+		    		<!--222 - COMMENT SPAM PENALTY-->
+		    		<span ng-if="noti.admin_noti_type == 222">
+		    			Hi <span class="bold-pantone">{{noti.target_username}}</span>, some users reported your comment <span class="italic">"{{noti.comment_content}}"</span> on post titled <span class="highlight">{{noti.post_title}}</span>. After a thorough review we have agreed that your comment is a spam so we decided to penalize you with {{noti.penalty}} Foodie Points because it violated the Terms of Use of Foodie. Please be careful next time. 
+		    		</span>
+
+		    		You can review our Terms of Service by going to your profile then go to Settings > Account Settings > Terms of Use. 
+		    	<span class="timestamp" timeago="{{noti.date}}"></span>
+		  	</div>
+  	
+	  		<!--BITES-->		
+		  	<div class="foodie-box has-image has-timestamp" ng-if="noti.notification_type == 1" >
+		  		<img ng-cache ng-src="{{noti.source_user_image}}" ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')"/>  		
+		  		<img ng-cache class="notification-image" ng-src="{{noti.post_image}}" ng-click="gotoState('tab/newsfeed/{{noti.post_ID}}')"/>
+
+		  			<b ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')">{{noti.source_username}}</b> bite your post <span class="highlight" ng-click="gotoState('tab/newsfeed/{{noti.post_ID}}')">{{noti.post_title}}</span>
+
+		  		<span class="timestamp" timeago="{{noti.date}}"></span>
+		  	</div>
+
+		  	<!--COMMENT-->
+		    <div class="foodie-box has-image has-timestamp" ng-if="noti.notification_type == 2" ng-click="gotoState('tab/newsfeed/comment/{{noti.post_ID}}')">
+		    	<img ng-cache ng-src="{{noti.source_user_image}}" ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')"/>  
+		  		<img ng-cache class="notification-image" ng-src="{{noti.post_image}}" ng-click="gotoState('tab/newsfeed/{{noti.post_ID}}')"/>
+
+		  			<b ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')">{{noti.source_username}}</b> commented on your post "{{noti.comment_content}}"
+
+		    	<span class="timestamp" timeago="{{noti.date}}"></span>
+		    </div>
+
+		    <!--FOLLOW-->
+		    <div class="foodie-box has-timestamp" ng-if="noti.notification_type == 3" ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')">
+		    	<img ng-cache ng-src="{{noti.source_user_image}}"/>
+
+		    		<b ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')">{{noti.source_username}}</b> followed you. Visit profile now.
+
+		    	<span class="timestamp" timeago="{{noti.date}}"></span>
+		    </div>
+
+		    <!--ACCEPT-->
+		    <div class="foodie-box has-timestamp" ng-if="noti.notification_type == 4" ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')">
+		    	<img ng-cache ng-src="{{noti.source_user_image}}"/>
+
+		    		<b ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')">{{noti.source_username}}</b> accepted your request.  Visit profile now. 
+		    	<span class="timestamp" timeago="{{noti.date}}"></span>
+		    </div>
+
+		    <!--FACEBOOK FRIEND-->
+		    <div class="foodie-box has-timestamp" ng-if="noti.notification_type == 5" ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')">
+		    	<img ng-cache ng-src="{{noti.source_user_image}}" ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')"/>
+		    	
+		    		Your Facebook friend <span class="colored">{{noti.full_name}}</span> is now on Foodie as <b ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')">{{noti.source_username}}</b>. Visit profile now.
+
+		    	<span class="timestamp" timeago="{{noti.date}}"></span>
+		    </div>
+
+		    <!--ADMIN AWARD-->
+		    <div class="foodie-box has-timestamp" ng-if="noti.notification_type == 8">
+		  		<i class="icon ion-ribbon-b admin-award"></i> 		  		
+		  		Hi <span class="bold-pantone">{{noti.target_username}}</span>! Thank you for creating Foodie a better community by reporting an item in which you think that it violated the Terms of Use of the application. We have verified your report and we decided to award you 
+		  		<span class="colored">{{noti.penalty}} Foodie Points</span> for your effort. Please continue being an outstanding user!
+
+		  		<span class="timestamp" timeago="{{noti.date}}"></span>
+		    </div>
+
+
+		<!--LEVEL TWO NOTIFICATIONS-->
+
+			<!--FOLLOW REQUEST-->
+		    <div class="foodie-box has-two-buttons has-timestamp" ng-if="noti.notification_type == 11">
+		    	<img ng-cache ng-src="{{noti.source_user_image}}" ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')"/>
+		    	
+		    		<b ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')">{{noti.source_username}}</b><span ng-if="!noti.isDone"> wants to follow you</span><span ng-if="noti.isDone"> now follows you.</span>
+			    	<a class="button button-icon icon ion-checkmark-circled balanced action-button left" ng-if="!noti.isDone" ng-click="actionRequest(noti, true)"></a>
+			    	<a class="button button-icon icon ion-close-circled assertive action-button right" ng-if="!noti.isDone" ng-click="actionRequest(noti, false)"></a>
+
+		    	<span class="timestamp" timeago="{{noti.date}}"></span>
+		    </div>
+  	</div>
+
+<!--LOADERS-->
+	<div class="list">
+		<div class="load-tool" ng-if="AllNotifications == undefined" class="load-tool-clear"><i class="icon ion-loading-d"></i>Retrieving notifications</div>
+	</div> 
+  </ion-content>
+</ion-view>
+
+
+
+
+<!-- <ion-list>
+  		<ion-item ng-repeat="noti in AllNotifications" class="notificationBox" item="noti"> -->
+
+
+
+  		<!--LEVEL ONE NOTIFICATIONS-->
+  			<!--ADMINISTRATIVE-->
+		    <!-- <p ng-if="noti.notification_type == 0">
+		    	<i class="icon ion-alert"></i> 
+		    	<b>{{noti.source_username}}</b> noticed you're abusing the app!
+		    </p> -->
+
+		    <!--BITES-->
+		    <!-- <div ng-if="noti.notification_type == 1" >
+		    	<img ng-cache ng-src="{{$root.domain_url}}imageviewer?q={{noti.source_ID}}&c=f" class="profpicNotificationBite"/>
+		    	<div class="notificationUsername">
+		    	<b>{{noti.source_username}}</b> bite your post {{noti.post_title}}<br />	
+		    	</div>	    	
+		    	<div class="notificationImage">
+		    	<img ng-cache ng-src="{{$root.domain_url}}imageviewer?q={{noti.post_ID}}&c=p"></img>
+		    	</div>
+
+		    	<span timeago="{{noti.date}}" class="notificationLabel"></span>
+		    </div> -->
+
+		    <!--COMMENT-->
+		   <!--  <div ng-if="noti.notification_type == 2">
+		    	<img ng-cache ng-src="{{$root.domain_url}}imageviewer?q={{noti.source_ID}}&c=f" class="profpicNotification"/>
+		    	<div class="notificationUsername">
+		    	<b>{{noti.source_username}}</b> commented on your post {{noti.post_title}}<br />
+		    	<span>"{{noti.comment_content}}"</span><br />
+		    	</div>	    	
+		    	<div class="notificationImage">
+		    	<img ng-cache ng-src="{{$root.domain_url}}imageviewer?q={{noti.post_ID}}&c=p" class="notifimage"></img>
+		    	</div>
+
+		    	<span timeago="{{noti.date}}" class="notificationLabel"></span>
+		    </div> -->
+
+		    <!--FOLLOW-->
+		    <!-- <p ng-if="noti.notification_type == 3">
+		    	<i class="icon ion-android-contact"></i> 
+		    	<img ng-cache ng-src="{{$root.domain_url}}imageviewer?q={{noti.source_ID}}&c=f" class="profpic"/>
+		    	<b>{{noti.source_username}}</b> followed you
+		    </p>
+
+		    <div ng-if="noti.notification_type == 4">
+		    	<img ng-cache ng-src="{{$root.domain_url}}imageviewer?q={{noti.source_ID}}&c=f" class="profpicNotification"/>
+		    	<div class="notificationUsername"><b>{{noti.source_username}}</b> accepted your request</div>  	
+		    	
+		    	<a class="button button-icon icon ion-ios7-redo notificationTime" ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')"></a>
+		    	
+		    	<span timeago="{{noti.date}}" class="notificationLabel"></span>
+		    </div> -->
+
+
+
+
+
+
+		<!--LEVEL TWO NOTIFICATIONS-->
+
+			<!--FOLLOW REQUEST-->
+		    <!-- <div ng-if="noti.notification_type == 11">
+		    	<img ng-cache ng-src="{{$root.domain_url}}imageviewer?q={{noti.source_ID}}&c=f" class="profpicNotification"/>
+		    	<div class="notificationUsername">
+		    	<b>{{noti.source_username}}</b>
+		    	<span ng-if="!noti.isDone"> wants to follow you</span>
+		    	</div>
+		    	<div class="notificationAcceptReject">
+
+		    	<a class="button button-icon icon ion-checkmark-circled" ng-if="!noti.isDone" ng-click="actionRequest(noti, true)"></a>
+		    	<a class="button button-icon icon ion-close-circled" ng-if="!noti.isDone" ng-click="actionRequest(noti, false)"></a>
+		    	<span ng-if="noti.isDone"></span>
+		    	<a class="button button-icon icon ion-ios7-redo" ng-if="noti.isDone" ng-click="gotoState('tab/newsfeed/otherprofile/{{noti.source_ID}}')"></a>
+		    	</div>
+		    	<span timeago="{{noti.date}}" class="notificationLabel"></span>
+		    </div> -->
+
+			<!--BUTTONS ON SWIPE-->		    
+    		<!-- <ion-option-button class="button-assertive comment-options" ng-if="showDelete(noti)" ng-click="deleteThisNotification(noti)">
+		      	<i class="icon ion-android-close"></i><br /><label>Delete</label>
+		    </ion-option-button> 
+
+		    <ion-reorder-button></ion-reorder-button>
+	  	</ion-item>
+	</ion-list> -->

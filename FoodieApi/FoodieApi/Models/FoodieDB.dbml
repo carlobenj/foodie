@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FoodieDB_dev" Class="FoodieDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=RLC-PC\SQLEXPRESS;Initial Catalog=FoodieDB_dev;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="FoodieDB_devConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.bite" Member="bites">
+    <Type Name="bite">
+      <Column Name="bite_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="post_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="bite_source_foodict_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="post_bite" Member="post" ThisKey="post_ID" OtherKey="post_ID" Type="post" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="foodict_bite" Member="foodict" ThisKey="bite_source_foodict_ID" OtherKey="foodict_ID" Type="foodict" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.comment" Member="comments">
+    <Type Name="comment">
+      <Column Name="comment_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="post_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="comment_source_foodict_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="comment_content" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="comment_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="post_comment" Member="post" ThisKey="post_ID" OtherKey="post_ID" Type="post" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="foodict_comment" Member="foodict" ThisKey="comment_source_foodict_ID" OtherKey="foodict_ID" Type="foodict" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.report" Member="reports">
+    <Type Name="report">
+      <Column Name="report_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="report_type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="report_source_user_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="report_source_item_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="report_description" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="report_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="report_isDone" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="user_report" Member="user" ThisKey="report_source_user_ID" OtherKey="user_ID" Type="user" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.follow" Member="follows">
+    <Type Name="follow">
+      <Column Name="follow_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="follow_source_foodict_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="follow_target_foodict_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="follow_status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="foodict_follow" Member="foodict" ThisKey="follow_source_foodict_ID" OtherKey="foodict_ID" Type="foodict" IsForeignKey="true" />
+      <Association Name="foodict_follow1" Member="foodict1" ThisKey="follow_target_foodict_ID" OtherKey="foodict_ID" Type="foodict" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.post" Member="posts">
+    <Type Name="post">
+      <Column Name="post_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="foodict_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="post_title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="post_text" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="post_type" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="post_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="post_image" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="post_location_latitude" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="post_location_longitude" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="post_nearby_establishment" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="post_availed_offer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="post_rating" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="post_bite" Member="bites" ThisKey="post_ID" OtherKey="post_ID" Type="bite" />
+      <Association Name="post_comment" Member="comments" ThisKey="post_ID" OtherKey="post_ID" Type="comment" />
+      <Association Name="foodict_post" Member="foodict" ThisKey="foodict_ID" OtherKey="foodict_ID" Type="foodict" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.foodict" Member="foodicts">
+    <Type Name="foodict">
+      <Column Name="foodict_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="foodict_first_name" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="foodict_middle_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="foodict_last_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="foodict_isMale" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="foodict_contact" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="foodict_country" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="foodict_city" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="foodict_foodie_points" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="foodict_image" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="foodict_isPrivate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="foodict_bite" Member="bites" ThisKey="foodict_ID" OtherKey="bite_source_foodict_ID" Type="bite" />
+      <Association Name="foodict_comment" Member="comments" ThisKey="foodict_ID" OtherKey="comment_source_foodict_ID" Type="comment" />
+      <Association Name="foodict_follow" Member="follows" ThisKey="foodict_ID" OtherKey="follow_source_foodict_ID" Type="follow" />
+      <Association Name="foodict_follow1" Member="follows1" ThisKey="foodict_ID" OtherKey="follow_target_foodict_ID" Type="follow" />
+      <Association Name="foodict_post" Member="posts" ThisKey="foodict_ID" OtherKey="foodict_ID" Type="post" />
+      <Association Name="foodict_view" Member="views" ThisKey="foodict_ID" OtherKey="view_source_foodict_ID" Type="view" />
+      <Association Name="foodict_voucher" Member="vouchers" ThisKey="foodict_ID" OtherKey="voucher_owner_foodict_ID" Type="voucher" />
+      <Association Name="user_foodict" Member="user" ThisKey="user_ID" OtherKey="user_ID" Type="user" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[user]" Member="users">
+    <Type Name="user">
+      <Column Name="user_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_email" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="user_type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="user_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="user_fbid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="user_report" Member="reports" ThisKey="user_ID" OtherKey="report_source_user_ID" Type="report" />
+      <Association Name="user_foodict" Member="foodicts" ThisKey="user_ID" OtherKey="user_ID" Type="foodict" />
+      <Association Name="user_fooducer" Member="fooducers" ThisKey="user_ID" OtherKey="user_ID" Type="fooducer" />
+    </Type>
+  </Table>
+  <Table Name="dbo.fooducer" Member="fooducers">
+    <Type Name="fooducer">
+      <Column Name="fooducer_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fooducer_username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="fooducer_company" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="fooducer_contact" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="fooducer_country" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="fooducer_city" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="fooducer_foodie_points" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fooducer_image" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="fooducer_establishment_address" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="fooducer_location_longitude" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="fooducer_location_latitude" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="fooducer_about" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="fooducer_website" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="fooducer_fb" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="fooducer_twitter" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="fooducer_ig" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Association Name="fooducer_view" Member="views" ThisKey="fooducer_ID" OtherKey="view_target_fooducer_ID" Type="view" />
+      <Association Name="fooducer_offer" Member="offers" ThisKey="fooducer_ID" OtherKey="offer_source_fooducer_ID" Type="offer" />
+      <Association Name="user_fooducer" Member="user" ThisKey="user_ID" OtherKey="user_ID" Type="user" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[view]" Member="views">
+    <Type Name="view">
+      <Column Name="view_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="view_source_foodict_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="view_target_fooducer_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="view_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="view_time" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Association Name="foodict_view" Member="foodict" ThisKey="view_source_foodict_ID" OtherKey="foodict_ID" Type="foodict" IsForeignKey="true" />
+      <Association Name="fooducer_view" Member="fooducer" ThisKey="view_target_fooducer_ID" OtherKey="fooducer_ID" Type="fooducer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.voucher" Member="vouchers">
+    <Type Name="voucher">
+      <Column Name="voucher_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="voucher_code" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="voucher_owner_foodict_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="voucher_source_offer_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="voucher_isClaimed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="voucher_isDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="voucher_bought_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="voucher_claim_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="foodict_voucher" Member="foodict" ThisKey="voucher_owner_foodict_ID" OtherKey="foodict_ID" Type="foodict" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="offer_voucher" Member="offer" ThisKey="voucher_source_offer_ID" OtherKey="offer_ID" Type="offer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.offer" Member="offers">
+    <Type Name="offer">
+      <Column Name="offer_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="offer_source_fooducer_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="offer_text" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="offer_image" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="offer_expiry" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="offer_max" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="offer_savings" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="offer_claim_from" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="offer_claim_to" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="offer_amount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="offer_title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="offer_details" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="offer_post_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="offer_voucher" Member="vouchers" ThisKey="offer_ID" OtherKey="voucher_source_offer_ID" Type="voucher" />
+      <Association Name="fooducer_offer" Member="fooducer" ThisKey="offer_source_fooducer_ID" OtherKey="fooducer_ID" Type="fooducer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.notification" Member="notifications">
+    <Type Name="notification">
+      <Column Name="notification_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="notification_type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="notification_source_foodict_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="notification_target_foodict_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="notification_misc_ID_1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="notification_misc_ID_2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="notification_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="notification_isDone" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="notification_misc_data_int" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="notification_misc_data_string1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="notification_misc_data_string2" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.getMyFollowingsID" Method="getMyFollowingsID">
+    <Parameter Name="myFoodictID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="getMyFollowingsIDResult">
+      <Column Name="follow_target_foodict_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getMyFollowersID" Method="getMyFollowersID">
+    <Parameter Name="myFoodictID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="getMyFollowersIDResult">
+      <Column Name="follow_source_foodict_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getPostsOfThisFoodict" Method="getPostsOfThisFoodict">
+    <Parameter Name="following_foodict_ID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="getPostsOfThisFoodictResult">
+      <Column Name="post_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="foodict_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="post_title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="post_text" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="post_image" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="post_type" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="post_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="foodict_username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="foodict_image" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getCommentsForThisPost" Method="getCommentsForThisPost">
+    <Parameter Name="postID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="getCommentsForThisPostResult">
+      <Column Name="comment_content" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="comment_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="foodict_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="foodict_username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="foodict_image" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+</Database>

@@ -1,0 +1,108 @@
+<ion-view title="Validate">
+  <ion-content class="has-header white">  
+    <div class="list validate-search">
+        <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" placeholder="Search promotion title" ng-model="searchFilter">
+        </label>
+    </div>    
+    <div class="block-icon" ng-if="validateTiles.length == 0 && validateTiles != undefined">
+        <i class="icon ion-pricetags"></i><br/>
+        <h4>Nothing to validate.</h4> 
+        There are no coupons scheduled<br /> for claiming today.
+    </div>
+    <div class="validate-tile-wrapper white">
+        <div class="tile" ng-click="goToPromo(offer.offer_ID)" ng-repeat="offer in validateTiles | filter: searchFilter">
+            <img ng-cache ng-src="{{offer.offer_image}}"></img>
+            <div class="title">{{offer.offer_title}}</div>
+            <div class="count">Unclaimed: {{offer.offer_unclaimedCount}}</div>
+        </div>
+    </div>
+  </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-view title="FOODIE">
+  <ion-content class="has-header padding">
+    <h1>Home</h1>
+    <button class="button button-positive" ng-click="logout()">logout</button>    
+    <a class="button button-positive" href="#/tab/home/followers">Followers</a>    
+    <a class="button button-positive" href="#/tab/home/following">Following</a>
+    <div class="list list-inset">
+        <div class="item">          
+            <img ng-src="{{profileDetails.foodict_image}}" class="profpic"><br />
+            <label ng-bind="profileDetails.foodict_ID"></label><br />
+            <label ng-bind="profileDetails.user_ID"></label><br />        
+            <label ng-bind="profileDetails.foodict_username"></label><br />
+            <label ng-bind="profileDetails.foodict_first_name"></label><br />
+            <label ng-bind="profileDetails.foodict_middle_name"></label><br />
+            <label ng-bind="profileDetails.foodict_last_name"></label><br />
+            <label ng-bind="profileDetails.foodict_isMale"></label><br />
+            <label ng-bind="profileDetails.foodict_contact"></label><br />
+            <label ng-bind="profileDetails.foodict_country"></label><br />
+            <label ng-bind="profileDetails.foodict_city"></label><br />
+            <label ng-bind="profileDetails.foodict_foodie_points"></label><br />
+            <label ng-bind="profileDetails.user_email"></label>
+        </div>
+    </div>
+  </ion-content>
+</ion-view> -->

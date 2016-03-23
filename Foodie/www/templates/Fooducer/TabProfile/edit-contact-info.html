@@ -1,0 +1,40 @@
+<ion-view title="Location and Contact">
+  <ion-content class="has-header white">
+  	<div class="list">
+
+  	  <div class="item item-divider">
+    	Contact Information
+  	  </div>
+	  <label class="item item-input">
+	    <span class="input-label">Contact</span>
+	    <input type="text" placeholder="None" ng-model="profileDetails.fooducer_contact">
+	  </label>
+
+	  <div class="item item-divider">
+    	Establishment Address
+  	  </div>
+
+	  <label class="item item-input item-stacked-label">
+	    <span class="input-label">Full Address</span>
+	    <textarea class="company-description" placeholder="None" ng-model="profileDetails.fooducer_establishment_address"></textarea>
+	  </label>
+
+	  <label class="item item-input item-select">
+	    <div class="input-label">
+	      Country
+	    </div>
+	    <select ng-model="profileDetails.fooducer_country">
+	      <option ng-repeat="country in countries" value="{{country.code}}" ng-selected="country.code == profileDetails.foodict_isMale">{{country.name}}</option>
+	    </select>
+	  </label>
+
+	  <label class="item item-input">
+	    <span class="input-label">City</span>
+	    <input type="text" placeholder="None" ng-model="profileDetails.fooducer_city">
+	  </label>
+	</div>
+
+	<button class="button button-full button-assertive foodie-button-assertive" ng-click="saveChanges(profileDetails, 3)">Save</button>
+
+  </ion-content>
+</ion-view>

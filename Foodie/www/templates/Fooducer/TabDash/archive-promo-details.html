@@ -1,0 +1,31 @@
+<ion-view>
+  <ion-content class="has-header white">  
+        <div class="promotion-image-wrapper">
+            <img ng-cache class="offer-image" ng-src="{{promotion.offer_image}}">
+        </div>
+        <div class="promotion-header">
+            <b class="title" ng-bind="promotion.offer_title"></b>
+            <p ng-bind="promotion.offer_text"></p>
+        </div>
+        <div class="promotion-detail">            
+            <b>In detail:</b><br/>
+                <div class="detail" ng-repeat="detail in promotion.offer_details" ng-if="detail.trim().length > 0"><i class="bullet"></i>{{detail}}</div>
+            </p>
+        </div>
+        <div class="list list-inset coupon-status">
+            <div class="item" ng-if="promotion.offer_isAvailable">
+                <b>Remaining coupon: </b> {{promotion.offer_max - promotion.offer_availed}}
+            </div>
+            <div class="item" ng-if="promotion.offer_isAvailable">
+                <b>Remaining time: </b>  <span time-remaining="{{promotion.offer_expiry}}"></span>
+            </div>  
+            <div class="item">
+                <b>Claim from: </b> <span datetime="{{promotion.offer_claim_from}}"></span>
+            </div>            
+            <div class="item">
+                <b>Claim until: </b> <span datetime="{{promotion.offer_claim_to}}"></span>
+            </div>      
+        </div>
+        <div class="foodie-divider-xxs"></div>
+  </ion-content>
+</ion-view>

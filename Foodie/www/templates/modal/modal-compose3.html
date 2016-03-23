@@ -1,0 +1,82 @@
+<ion-modal-view ng-controller="ComposeModalCtrl" class="pane">
+    <ion-header-bar class="bar-assertive">
+    	<div class="buttons modal-buttons">
+        	<i class="button button-icon ion-close modal-icons" ng-click="closeComposeModal()" ng-if="slideIs(0)"></i>	
+        	<i class="button button-icon ion-chevron-left modal-icons" ng-click="previousSlide()" ng-if="!slideIs(0)"></i>	
+    	</div>
+    	<h1 class="title">Compose New</h1>
+    	<div class="buttons">
+        	<button class="button button-clear" ng-click="nextSlide()" ng-if="!slideIs(1)">Next</button>
+        	<button class="button button-clear" ng-if="!slideIs(0)">Post</button>
+    	</div>
+    </ion-header-bar>
+    <ion-content class="foodie-modal-view" class="pane">
+    	<ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" ng-init="toggleSlide(false)">
+
+		<!--IMAGES/TITLE-->
+		  <ion-slide id="firstSlide">
+		  	<div class="foodie-divider-sm"></div>
+		    <div class="list padding-white">
+		  		<canvas id="postPhotoCanvas" ng-click="getPhoto()" width="500" height="500" class="compose-photo-canvas"></canvas>
+	    	</div>
+		    <div class="list">
+				<label class="item item-input">
+				    <input type="text" size="50" placeholder="Name this food..." ng-model="post_title" />
+				</label>
+			</div>
+		  </ion-slide>
+
+		<!--DESCRIPTION/STARS--> 
+		  <ion-slide>
+		    <div class="list">
+		    	<div class="foodie-divider-sm"></div>
+				<label class="item item-input">
+					<textarea class="foodie-textarea-xlarge" maxlength="1250" placeholder="Describe the food..." ng-model="post_text"></textarea>
+				</label>
+
+	    		<div class="foodie-divider-md divider-border"></div>
+	    		<div class="item item-icon-right">
+			    	<span class="medium-gray" ng-if="nearby_establishment == null">Share your location</span>
+			    	<span class="medium-gray" ng-if="nearby_establishment != null">Location: Near {{nearby_establishment}}</span> 
+				    <i class="icon ion-android-locate assertive" ng-class="{'inactive-icon': !isChecked}" ng-click="toggleLocation()"></i>
+			  	</div>
+
+	    		<div class="foodie-divider-md divider-border"></div>
+				<div class="item rate-bar padding-fix">
+				    <div class="rate-text medium-gray">Rate your dining experience: </div>
+				    <i class="icon ion-star energized" ng-class="{'inactive-icon': rating < 1}" ng-click="rateIt(1)"></i>
+				    <i class="icon ion-star energized" ng-class="{'inactive-icon': rating < 2}" ng-click="rateIt(2)"></i>
+				    <i class="icon ion-star energized" ng-class="{'inactive-icon': rating < 3}" ng-click="rateIt(3)"></i>
+				    <i class="icon ion-star energized" ng-class="{'inactive-icon': rating < 4}" ng-click="rateIt(4)"></i>
+				    <i class="icon ion-star energized" ng-class="{'inactive-icon': rating < 5}" ng-click="rateIt(5)"></i>
+				</div>
+				<button ng-click="postBlog()">POST</button>
+			</div>
+		  </ion-slide>
+		</ion-slide-box>
+  	</ion-content>
+</ion-modal-view>
+
+
+
+<!--
+<label class="item item-input item-stacked-label">
+			    <span class="input-label">Description</span>
+				<textarea class="foodie-textarea-large" maxlength="2500" placeholder="Describe this awesome treat!" ng-model="post_text"></textarea>
+			</label>
+			<div class="item item-toggle">
+			     {{toggleText}} location sharing
+			     <label class="toggle toggle-assertive">
+			       <input type="checkbox" ng-model="isChecked" ng-change="toggleLocation()">
+			       <div class="track">
+			         <div class="handle"></div>
+			       </div>
+			     </label>
+			</div>
+			<div id="map" class="foodie-maps" ng-if="isChecked"></div>
+	    <button class="button button-full button-energized" ng-click="postBlog()">Post</button>
+	    <br/>
+
+
+
+-->

@@ -1,0 +1,74 @@
+<ion-view title="My Coupons">
+  <ion-content class="has-header white">
+    <div class="list">
+
+      <div class="item item-divider item-divider item-icon-right" ng-click="available_isVisible = !available_isVisible">
+        Available Coupons <span class="badge badge-dark" ng-if="(voucher_available.length >= 1) && !available_isVisible">{{voucher_available.length}}</span>
+        <i class="icon icon-accessory" ng-class="{'ion-chevron-up': available_isVisible, 'ion-chevron-down': !available_isVisible}"></i>
+        </div>
+        <div class="item" ng-if="!(voucher_available.length >= 1) && available_isVisible">
+          None
+    </div>
+    <div class="foodie-box-thumbnail" ng-repeat="voucher in voucher_available" ng-if="available_isVisible" ng-click="openVoucherModal(voucher)">
+          <img class="thumbnail" ng-cache ng-src="{{voucher.offer_image}}"></img>
+          <b class="title" ng-bind="voucher.offer_title"></b>
+          <p class="description" ng-bind="voucher.fooducer_company"></p>
+          <div class="details-wrapper">
+              <div class="detail">Claim start: <span datetime="{{voucher.offer_claim_from}}"></span></div>
+              <div class="detail">Claim end: <span datetime="{{voucher.offer_claim_to}}"></span></div>  
+          </div>
+        </div>
+
+
+
+
+      <div class="item item-divider item-divider item-icon-right" ng-click="expired_isVisible = !expired_isVisible">
+        Expired Coupons <span class="edit-voucher" ng-class="{'edit-isInactive': !expired_delete}" ng-if="(voucher_expired.length >= 1) && expired_isVisible" ng-click="toggleExpiredDelete(); $event.stopPropagation();"></span>
+        <span class="badge badge-dark" ng-if="(voucher_expired.length >= 1) && !expired_isVisible">{{voucher_expired.length}}</span>
+        <i class="icon icon-accessory" ng-class="{'ion-chevron-up': expired_isVisible, 'ion-chevron-down': !expired_isVisible}"></i>
+        </div>
+        <div class="item" ng-if="!(voucher_expired.length >= 1) && expired_isVisible">
+          None
+    </div>
+    <ion-list show-delete="expired_delete" ng-if="(voucher_expired.length >= 1) && expired_isVisible">
+          <ion-item class="item foodie-box-thumbnail" ng-repeat="voucher in voucher_expired" ng-click="openVoucherModal(voucher)">
+            <img class="thumbnail" ng-cache ng-src="{{voucher.offer_image}}"></img>
+            <b class="title" ng-bind="voucher.offer_title"></b>
+            <p class="description" ng-bind="voucher.fooducer_company"></p>
+            <div class="details-wrapper">
+                <div class="detail">Expired last: <span datetime="{{voucher.offer_claim_to}}"></span></div>
+            </div>            
+        <ion-delete-button class="ion-minus-circled"
+                         ng-click="deleteVoucher(voucher, 1); $event.stopPropagation();">
+          </ion-delete-button>
+          </ion-item>
+    </ion-list>
+
+
+
+      <div class="item item-divider item-divider item-icon-right" ng-click="claimed_isVisible = !claimed_isVisible">
+        Claimed Coupons <span class="edit-voucher" ng-class="{'edit-isInactive': !claimed_delete}" ng-if="(voucher_claimed.length >= 1) && claimed_isVisible" ng-click="toggleClaimedDelete(); $event.stopPropagation();"></span>
+        <span class="badge badge-dark" ng-if="(voucher_claimed.length >= 1) && !claimed_isVisible">{{voucher_claimed.length}}</span>
+        <i class="icon icon-accessory" ng-class="{'ion-chevron-up': claimed_isVisible, 'ion-chevron-down': !claimed_isVisible}"></i>
+        </div>
+        <div class="item" ng-if="!(voucher_claimed.length >= 1) && claimed_isVisible">
+          None
+    </div>
+    <ion-list show-delete="claimed_delete" ng-if="(voucher_claimed.length >= 1) && claimed_isVisible">      
+          <ion-item class="item foodie-box-thumbnail" ng-repeat="voucher in voucher_claimed" ng-click="openVoucherModal(voucher)">
+            <img class="thumbnail" ng-cache ng-src="{{voucher.offer_image}}"></img>
+            <b class="title" ng-bind="voucher.offer_title"></b>
+            <p class="description" ng-bind="voucher.fooducer_company"></p>
+            <div class="details-wrapper">
+                <div class="detail">Claimed last: <span datetime="{{voucher.voucher_claim_date}}"></span></div>
+            </div>            
+        <ion-delete-button class="ion-minus-circled"
+                         ng-click="deleteVoucher(voucher, 2); $event.stopPropagation();">
+          </ion-delete-button>
+          </ion-item>
+    </ion-list>
+
+  </div>
+
+  </ion-content>
+</ion-view>

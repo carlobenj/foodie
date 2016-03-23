@@ -1,0 +1,80 @@
+<ion-modal-view class="pane" ng-controller="ReportModalCtrl">    
+    <div class="bar bar-header item-input-inset bar-stable">
+	    <!-- <button class="button button-clear" ng-click="closeModalReport()">Close</button> -->
+	    <!-- button class="button button-clear" ng-click="backToStart()" ng-if="slideIndex != 0 && report_type != 2">Back</button> -->
+	    <i class="button button-icon ion-close modal-icons" ng-click="closeModalReport()" ng-if="slideIndex == 0"></i>	    
+	    <i class="button button-icon ion-chevron-left modal-icons" ng-click="backToStart()" ng-if="slideIndex == 1 || slideIndex == 2"></i>
+		<h1 class="title">Help Us Understand The Problem</h1>
+	</div>
+    <ion-content class="foodie-regular-modal-view">
+    <ion-slide-box on-slide-changed="slideChanged($index)" show-pager="false" ng-init="toggleSlide(false)">
+    		<ion-slide active-slide="model">
+				<div class="list">
+				    <!-- <a class="item item-thumbnail-left" href="#">
+				      <img ng-cache ng-src="{{focusedItem.post_image}}">
+				      <h2>{{focusedItem.post_title}}</h2>
+				      <p>{{focusedItem.foodict_username}}</p>
+				    </a> -->
+				    <div class="foodie-box-thumbnail">
+				        <img class="thumbnail" ng-cache ng-src="{{focusedItem.post_image}}"></img>
+				        <b class="title" ng-bind="focusedItem.post_title"></b>
+				        <p class="description" ng-bind="focusedItem.foodict_username"></p>
+				        <div class="details-wrapper">
+				          <p>{{focusedItem.post_desc}}</p>
+				    	</div>
+				    </div>
+		  			<div class="foodie-divider-sm"></div>
+					<div class="item item-divider item-icon-right">
+			    		What's the problem with this post?
+			  	  	</div>
+
+			  	  	<!-- TYPES -->
+			  	  	<a class="item item-icon-right" ng-click="selectThis(1)">
+					  I don't like this post<i class="icon ion-chevron-right icon-accessory"></i>
+					</a>
+					<a class="item item-icon-right" ng-click="selectThis(2)">
+					  It shouldn't be on Foodie<i class="icon ion-chevron-right icon-accessory"></i>
+					</a>
+					<a class="item item-icon-right" ng-click="sendReport(0,focusedItem.post_ID);selectThis(3);">
+					  It's a spam<i class="icon ion-chevron-right icon-accessory"></i>
+					</a>
+
+				</div>
+			</ion-slide>
+			<ion-slide>
+				<div class="list">
+					<h4>In this case we suggest that you</h4>
+					<div class="foodie-box has-follow-action">
+				  		<img ng-cache ng-src="{{focusedItem.foodict_image}}" class="profpic">
+						<b>{{focusedItem.foodict_username}}</b><br/>
+						<span class="profile-follow-action following" ng-click="unfollowThis(focusedItem, 'Unfollow')"><i></i></span>
+					</div>
+				</div>				
+			</ion-slide>
+			<ion-slide>
+				<div class="list">		
+					<div class="foodie-divider-sm"></div>	
+					<label class="item item-input">
+						<textarea class="foodie-textarea-2xlarge" maxlength="1250" placeholder="Tell us the reason why..." ng-model="report_description"></textarea>
+					</label>  			
+					<div class="foodie-divider-sm"></div>
+					<button class="button button-full button-assertive foodie-button-assertive" ng-click="sendReport(1,focusedItem.post_ID, report_description)">Send</button>
+				</div>
+			</ion-slide>
+			<ion-slide>
+				<div class="list">	
+					<h4>Thanks for making Foodie a better community</h4>
+					<div class="foodie-divider-sm"></div>
+					<button class="button button-full button-assertive foodie-button-assertive" ng-click="finishReport()">Finish</button>
+				</div>
+			</ion-slide>			
+			<ion-slide>
+				<div class="list">	
+					<h4>That's sad, but we hope it will give you a better experience using Foodie. In case you change your mind, you can always refollow {{focusedItem.foodict_username}}.</h4>
+					<div class="foodie-divider-sm"></div>
+					<button class="button button-full button-assertive foodie-button-assertive" ng-click="finishReport()">Finish</button>
+				</div>
+			</ion-slide>
+		</ion-slide-box>	
+  	</ion-content>
+</ion-modal-view>

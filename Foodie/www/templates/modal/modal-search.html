@@ -1,0 +1,46 @@
+<ion-modal-view ng-controller="SearchModalCtrl" class="pane">    
+    <div class="bar bar-header item-input-inset bar-pantone">
+	    <label class="item-input-wrapper">
+	        <i class="icon ion-ios7-search-strong placeholder-icon"></i>
+	        <input type="search" placeholder="Search" ng-model="filter" ng-change="searchIt()"></input>
+	    </label>
+    	<button class="button button-clear" ng-click="closeSearchModal()">Cancel</button>
+	</div>
+	<div class="bar bar-subheader white search">	  
+	  	<div class="button-bar">
+		  <a class="button" ng-class="{'search-isActive': isFoodictSearch}" ng-click="filterFoodict(true)">People</a>
+		  <a class="button" ng-class="{'search-isActive': !isFoodictSearch}" ng-click="filterFoodict(false)">Offers</a>
+		</div>
+	</div>
+    <ion-content class="search-modal-view" class="pane">
+    	<div class="foodie-box" ng-repeat="foodict in foodict_result | filter: filter" ng-if="isFoodictSearch" ng-click="openProfile(foodict.foodict_ID)">
+    		<img ng-src="{{foodict.foodict_image}}" class="profpic">
+    		<b>{{foodict.foodict_username}}</b><br/>
+		    <span class="name">{{foodict.foodict_fullname}}</span>
+    	</div>
+    	<div ng-repeat="offer in offer_result | filter: filter" ng-if="!isFoodictSearch">
+	  		<div class="offer-card">
+	  			<img class="offer-image" ng-cache ng-src="{{offer.offer_image}}"></img>
+	  			<b ng-if="offer.offer_title != null">{{offer.offer_title}}</b><b ng-if="offer.offer_title == null">No Title</b>
+	  			<p ng-if="offer.offer_text != null">{{offer.offer_text}}</p><p ng-if="offer.offer_text == null">No description available</p>
+	  			<a ng-click="openOffer(offer.offer_ID)" class="offer-button">VIEW DETAILS</a>
+	  		</div>
+	    	<div class="foodie-divider-xxs divider-border gray"></div>  
+  		</div>
+
+    	<!-- <div class="foodie-box" ng-repeat="offer in offer_result | filter: filter" ng-if="!isFoodictSearch" ng-click="openOffer(offer.offer_ID)">
+    		<img ng-src="{{offer.offer_image}}">
+    		<b>{{offer.offer_title}}</b><br />
+    		<span>{{offer.fooducer_username}}</span>
+    	</div> -->
+	    <!-- <div class="item item-avatar item-button-right" ng-repeat="foodict in foodict_result | filter: filter" ng-if="isFoodictSearch">
+		    <img ng-src="{{$root.domain_url}}imageviewer?q={{foodict.foodict_ID}}&c=f" class="profpic">
+		    <h2 ng-click="openProfile(foodict.foodict_ID)">{{foodict.foodict_fullname}}</h2>
+		    <p>{{foodict.foodict_username}}</p>
+		</div>   
+	    <div class="item item-avatar item-button-right" ng-repeat="offer in offer_result | filter: filter" ng-if="!isFoodictSearch">
+		    <img ng-src="{{$root.domain_url}}imageviewer?q={{offer.offer_ID}}&c=o">
+		    <div class="foodie-comment-username" ng-click="openOffer(offer.offer_ID)">{{offer.fooducer_username}}</div>
+		</div> -->	
+  	</ion-content>
+</ion-modal-view>

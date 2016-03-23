@@ -1,0 +1,162 @@
+
+/*LINKS*/
+a.foodie-relink:link, a.foodie-relink:visited, a.foodie-relink:active, a.foodie-relink:hover {
+  text-decoration: none !important;
+  color: #000000 !important;
+}
+
+/*IONIC OVERRIDES*/
+
+.tabs
+{
+	/*box-shadow: 0px 2px 3px rgba(0,0,0,0.05) !important;*/
+	border-bottom: 1px solid #BC002B !important;
+}
+
+.tabs-striped.tabs-assertive .tab-item
+{
+	color: rgba(255, 255, 255, 0.4);
+}
+
+.has-tabs-top
+{
+	top: 80px !important; /*89*/
+}
+
+/*FULL NAV BAR*/
+.bar.bar-assertive
+{
+	background-color: #D50032;
+	border-color: #D50032;
+	height: 45px;
+}
+
+
+/*MODAL BUTTONS*/
+.modal > .bar.bar-assertive > .button
+{
+	top: 3px !important;
+}
+
+/*BAR TITLE*/
+.bar.bar-assertive > .title
+{
+	top: 0px !important;
+	font-size: 18px !important;	
+    left: 12px !important;
+    text-align: left !important;
+}
+
+/*BAR BUTTONS RIGHT*/
+.bar.bar-assertive > .right-buttons
+{
+	top: 5px !important;
+}
+
+/*ALL BUTTONS*/
+.bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar .button.button-clear.icon-left:before, .bar .button.button-clear.icon-right:before 
+{
+    font-size: 30px;
+    line-height: 30px;
+}
+
+/*BAR BACK BUTTON*/
+.bar.bar-assertive > .back-button
+{
+	top: 5px !important;
+    width: 100px !important;
+    text-align: left !important;
+}
+.bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before {
+    vertical-align: top;
+    font-size: 24px;
+    line-height: 24px;
+}
+
+/*FULL TAB BAR*/
+.tabs-striped.tabs-assertive .tabs 
+{
+	top: 45px !important;
+	background-color: #BC002B;
+	height: 35px;
+	line-height: 35px;
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.05) inset !important;
+}
+
+/*NOTIFICATION BADGE*/
+.tab-item .badge
+{
+	top: 10% !important;
+	right: 0px !important;
+	color: #BC002B !important;
+}
+
+/*TOGGLE STYLE*/
+.toggle.toggle-assertive input:checked + .track
+{
+	border-color: #D50032 !important;
+	background-color: #D50032 !important;
+}
+
+
+/*TABS SINGLE ACTIVE*/
+.tabs-striped.tabs-assertive .tab-item.tab-item-active, .tabs-striped.tabs-assertive .tab-item.active, .tabs-striped.tabs-assertive .tab-item.activated 
+{
+	/*border-color: #D55;
+	color: #D55;*/
+	color: #FFFFFF;
+	border-bottom: 2px solid #FFFFFF;
+}
+
+/*POPOVER*/
+.popover
+{
+	height: 60px;
+	width: 150px;
+}
+
+/* ICONIFY ONE TAB */ 
+
+.has-icon .tab-title:before
+{
+	font-family: "Ionicons";
+	content: "";
+	font-size: 30px;
+	color: #FFFFFF;
+}
+
+.has-icon.tab-item
+{	
+	max-width: 70px !important;
+	border-bottom: none !important;
+	background-image: url('../img/discover.png') !important;
+}
+
+.has-icon.tab-item.tab-item-active
+{	
+	border-bottom: 0px !important;
+}
+
+/*ACTIONSHEET*/
+.action-sheet .button 
+{
+	color: #444444;
+}
+
+/*IONIC FROST*/
+.ionic-contrib-frost 
+{
+	overflow: hidden;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	-webkit-filter: blur(10px);
+	opacity: 1;
+	z-index: 10;
+}
+
+
+
+

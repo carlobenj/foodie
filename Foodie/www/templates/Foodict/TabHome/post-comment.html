@@ -1,0 +1,30 @@
+<ion-view title="Comments" ng-controller="CommentCtrl">
+
+  <ion-content class="has-header foodie-comment-area">
+  	<ion-list>
+  		<ion-item class="item foodie-box has-timestamp" ng-repeat="comment in comments" item="comment">
+		    <img ng-cache ng-src="{{comment.foodict_image}}" ng-click="openProfile(comment.foodict_ID)"/>  		
+
+		  		<b ng-click="openProfile(comment.foodict_ID)">{{comment.foodict_username}} </b>
+		  		{{comment.comment_content}}
+
+		  		<span class="timestamp" timeago="{{comment.comment_date}}"></span>
+			<!--BUTTONS ON SWIPE-->
+		    <ion-option-button class="button-balanced comment-options" ng-if="reportEnabled(comment.foodict_ID)" ng-click="reportThis(comment)">
+		    	<i class="icon ion-flag"></i><br /><span>Report</span>
+		    </ion-option-button>
+    		<ion-option-button class="button-assertive comment-options" ng-if="deleteEnabled(comment.foodict_ID)" ng-click="deleteThis(comment)">
+		      	<i class="icon ion-android-close"></i><br /><span>Delete</span>
+		    </ion-option-button>
+		    <ion-reorder-button></ion-reorder-button>
+	  	</ion-item>
+	</ion-list>
+  </ion-content>
+
+  <ion-footer-bar class="foodie-comment-box item-input-inset">
+	  <label class="item-input-wrapper foodie-comment-wrapper">
+	    <textarea class="foodie-textarea-small" maxlength="150" placeholder="Add a comment..." ng-model="new_comment"></textarea>	
+	  </label>
+	  <button class="button button-icon foodie-circled-button ion-paper-airplane" ng-class="{'inactive-button': new_comment == ''}" ng-click="postNewComment()"></button>
+  </ion-footer-bar>
+</ion-view>

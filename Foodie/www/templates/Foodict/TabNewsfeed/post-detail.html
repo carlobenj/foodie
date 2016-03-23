@@ -1,0 +1,95 @@
+<ion-view title="">
+  <div class="post-detail-header-wrapper" ng-if="newsfeedPosts.post_image != null">
+	  	<img ng-cache class="post-detail-image" ng-src="{{newsfeedPosts.post_image}}" ng-click="openModalImage()" />
+	  	<div class="post-detail-image-overlay"></div>
+	  	<img ng-cache class="post-detail-image-bg" ng-src="{{newsfeedPosts.post_image}}"/>
+
+	  		<div class="post-detail-title">{{newsfeedPosts.post_title}}<span ng-if="newsfeedPosts.post_title.trim().length == 0 || newsfeedPosts.post_title == null">FOOD NAME</span></div>
+	  		<div class="post-detail-username">{{newsfeedPosts.foodict_username}}</div>
+	  		<div class="post-detail-date" timeago="{{newsfeedPosts.post_date}}"></div>
+
+	  		<a class="post-detail-button bite" ng-if="!isMyPost(newsfeedPosts)" ng-class="{'bitten': newsfeedPosts.isBitten}" ng-click="biteThisPost(newsfeedPosts)"></a>
+	  		<a class="post-detail-button comment" href="#/tab/newsfeed/comment/{{newsfeedPosts.post_ID}}"></a>
+	  		<a class="post-detail-button option" ng-click="openPopover($event, newsfeedPosts)"></a>
+
+
+	  	<div class="content-tabs pd-tabs-left" ng-class="{'content-inactive' : !isBlogDetail}" ng-click="changeTab(true)">About the Food</div>
+	  	<div class="content-tabs pd-tabs-right" ng-class="{'content-inactive' : isBlogDetail}" ng-click="changeTab(false); loadMap()">Other Information</div>
+	  	<div class="content-divider foodie-divider-xs white"></div>
+  </div>
+  <ion-content class="has-header post-detail-content">  
+  			<div class="list post-about-food" ng-show="isBlogDetail">
+	  			{{newsfeedPosts.post_text}}<span ng-if="newsfeedPosts.post_text.trim().length == 0 || newsfeedPosts.post_text == null">No description available</span>
+			</div>			
+  			<div class="list post-other-info" ng-show="!isBlogDetail">  				
+  				<div class="post-detail-bar" ng-click="gotoState('tab/newsfeed/' + newsfeedPosts.post_ID + '/biters')">
+  					<i class="detail-icon bite"></i>
+  					<span ng-if="newsfeedPosts.bites == null || newsfeedPosts.bites.length == 0">Be the first to bite this.</span>  					
+  					<span ng-if="newsfeedPosts.bites.length == 1"><b>{{newsfeedPosts.bites[0].foodict_username}}</b> bite this.</span>
+  					<span ng-if="newsfeedPosts.bites.length == 2">
+  						<b>{{newsfeedPosts.bites[0].foodict_username}}</b> and 
+  						<b>{{newsfeedPosts.bites[1].foodict_username}}</b> 
+  						bite this.
+  					</span>	
+  					<span ng-if="newsfeedPosts.bites.length == 3">
+  						<b>{{newsfeedPosts.bites[0].foodict_username}}</b>, 
+  						<b>{{newsfeedPosts.bites[1].foodict_username}}</b> and 
+  						<b>{{newsfeedPosts.bites[2].foodict_username}}</b> 
+  						bite this.
+  					</span>		  					
+  					<span ng-if="newsfeedPosts.bites.length > 3">
+  						<b>{{newsfeedPosts.bites[0].foodict_username}}, </b>
+  						<b>{{newsfeedPosts.bites[1].foodict_username}}, </b> 
+  						and {{newsfeedPosts.bites.length - 2}} others bite this.
+  					</span>	
+  				</div>
+  				<div class="post-detail-bar" ng-click="gotoState('tab/newsfeed/comment/' + newsfeedPosts.post_ID)">
+  					<i class="detail-icon comment"></i>  					
+  					<span ng-if="newsfeedPosts.comments == null || newsfeedPosts.comments.length == 0">No comments for this post</span>  					
+  					<span ng-if="newsfeedPosts.comments.length == 1">{{newsfeedPosts.comments.length}} comment for this post</span>
+  					<span ng-if="newsfeedPosts.comments.length > 1">{{newsfeedPosts.comments.length}} comments for this post</span>
+  				</div>
+  				<div class="post-detail-bar" ng-show="newsfeedPosts.post_rating != 0">
+  					<i class="detail-icon rating"></i>
+  					<span ng-if="newsfeedPosts.post_rating == 1">This food was rated <b>{{newsfeedPosts.post_rating}} star</b></span>
+					<span ng-if="newsfeedPosts.post_rating > 1">This food was rated <b>{{newsfeedPosts.post_rating}} stars</b></span>
+  				</div>
+  				<div class="post-detail-bar" ng-show="newsfeedPosts.post_nearby_establishment != null" ng-click="showLocation()">
+  					<i class="detail-icon ion-ios7-location-outline"></i>
+  					Taken near {{newsfeedPosts.post_nearby_establishment}}
+  				</div>
+				<div id="postdetailmap" class="post-detail-map" ng-show="newsfeedPosts.post_nearby_establishment != null"></div>
+	  		</div>
+		<!-- <div class="list">
+			
+			<div class="item item-avatar">
+				<img ng-src="{{$root.domain_url}}imageviewer?q={{newsfeedPosts.foodict_ID}}&c=f">
+				<h2  ng-bind="newsfeedPosts.user_name"></h2>
+				<p ng-bind="newsfeedPosts.post_text"></p>
+			</div>
+
+			<div class="item item-image ov-post-image">
+				<img ng-src="{{$root.domain_url}}imageviewer?q={{newsfeedPosts.post_ID}}&c=p">
+			</div>
+			<a class="read-more" ng-if="hasLocation" ng-click="toggleMap()">Show Map</a>
+    		<div id="postdetailmap" class="foodie-maps" ng-show="isMapShown">
+    		</div>
+			<div class="action-container">
+				<a class="item item-icon-left assertive foodie-action">
+					<i class="icon ion-happy foodie-action-icon"></i>
+					Bite
+				</a>
+				<a class="item item-icon-left assertive foodie-action" href="#/tab/newsfeed/comment/{{newsfeedPosts.post_ID}}">
+					<i class="icon ion-android-forums foodie-action-icon"></i>
+					Comment
+				</a>
+			</div>
+		</div> -->
+  </ion-content>
+  <ion-content class="has-header white" ng-if="newsfeedPosts.post_image == null">
+    <br><br>
+    <div class="list">
+      <div class="load-tool" class="load-tool-clear"><i class="icon ion-loading-d"></i> Loading...</div>
+    </div> 
+  </ion-content>
+</ion-view>

@@ -1,0 +1,121 @@
+<ion-modal-view class="modal-image black" ng-controller="ImageFilterModalCtrl">    
+    <ion-header-bar class="bar-dark filter-bar">    
+    	<h1 class="title">Add Filters</h1>
+    	<button class="button button-clear" ng-click="doneEditing()">Done</button>
+    </ion-header-bar>
+	<div class="image-filter-wrapper">	
+		<div class="image-holder">
+			<canvas id="filtercanvas" width="340" height="340"></canvas>
+		</div>
+	</div>
+	<div class="filter-footer">
+		<ion-scroll zooming="true" class="filter-tabs-scroll" direction="x">
+			<div class="filter-tabs-container">
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/normal.png" ng-click="filterize('normal')"></img>
+					<div class="tab-name">Normal</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/old7.png" ng-click="filterize('1977')"></img>
+					<div class="tab-name">1997</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/brannan.png" ng-click="filterize('brannan')"></img>
+					<div class="tab-name">Brannan</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/gotham.png" ng-click="filterize('gotham')"></img>
+					<div class="tab-name">Gotham</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/hefe.png" ng-click="filterize('hefe')"></img>
+					<div class="tab-name">Hefe</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/lordkelvin.png" ng-click="filterize('lordkelvin')"></img>
+					<div class="tab-name">Lord Kelvin</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/nashville.png" ng-click="filterize('nashville')"></img>
+					<div class="tab-name">Nashville</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/xpro.png" ng-click="filterize('xpro')"></img>
+					<div class="tab-name">X-PRO II</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/sunrise.png" ng-click="filterize('sunrise')"></img>
+					<div class="tab-name">Sunrise</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/clarity.png" ng-click="filterize('clarity')"></img>
+					<div class="tab-name">Clarity</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/concentrate.png" ng-click="filterize('concentrate')"></img>
+					<div class="tab-name">Woody</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/hazyDays.png" ng-click="filterize('hazyDays')"></img>
+					<div class="tab-name">Hazy Days</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/jarques.png" ng-click="filterize('jarques')"></img>
+					<div class="tab-name">Jarques</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/glowingSun.png" ng-click="filterize('glowingSun')"></img>
+					<div class="tab-name">Glowing Sun</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/nostalgia.png" ng-click="filterize('nostalgia')"></img>
+					<div class="tab-name">Nostalgia</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/hemingway.png" ng-click="filterize('hemingway')"></img>
+					<div class="tab-name">Bronze Wash</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/grungy.png" ng-click="filterize('grungy')"></img>
+					<div class="tab-name">Grungy</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/oldBoot.png" ng-click="filterize('oldBoot')"></img>
+					<div class="tab-name">Old Boot</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/vintage.png" ng-click="filterize('vintage')"></img>
+					<div class="tab-name">Vintage</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/lomo.png" ng-click="filterize('lomo')"></img>
+					<div class="tab-name">Lomo</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/sinCity.png" ng-click="filterize('sinCity')"></img>
+					<div class="tab-name">Sin City</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/crossProcess.png" ng-click="filterize('crossProcess')"></img>
+					<div class="tab-name">Cross Process</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/orangePeel.png" ng-click="filterize('orangePeel')"></img>
+					<div class="tab-name">Orange Peel</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/love.png" ng-click="filterize('love')"></img>
+					<div class="tab-name">Love</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/pinhole.png" ng-click="filterize('pinhole')"></img>
+					<div class="tab-name">Pin Hole</div>
+				</div>
+				<div class="filter-tabs">
+					<img class="tab-image" src="img/filter_thumbnail/herMajesty.png" ng-click="filterize('herMajesty')"></img>
+					<div class="tab-name">Majesty</div>
+				</div>
+			</div>
+		</ion-scroll>
+    </div>
+</ion-modal-view>

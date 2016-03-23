@@ -1,0 +1,31 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-light">    
+    	<button class="button button-clear" ng-click="cancelPlaces()">Cancel</button>
+    	<h1 class="title">Near Places</h1>
+    	<button class="button button-clear" ng-click="closePlaces()">Done</button>
+    </ion-header-bar>
+    <div class="floating-item-map">
+		<div id="placesmap" class="foodie-maps" ng-if="isChecked"></div>
+		<div class="foodie-divider-sm divider-border"></div>
+		<label class="item item-input">
+		   	<i class="icon ion-search placeholder-icon"></i>
+		   	<input type="search" placeholder="Search" ng-model="searchFilter" ng-change="scrollUp()">
+		</label>
+	</div>
+	<ion-content class="foodie-places">	
+		<!-- <ion-radio ng-model="nearby_establishment" ng-click="chooseThis(null)" checked>Leave it blank</ion-radio> -->
+		<div class="places-null" ng-if="allNearPlaces == null">No nearby places available</div>
+		<ion-radio ng-repeat="place in allNearPlaces | filter: searchFilter" ng-model="nearby_establishment" ng-click="chooseThis(place)">
+			<span>{{place.name}}</span><br/>
+			<span style="font-size: 12px;">{{place.vicinity}}</span>
+		</ion-radio>	
+		
+		<!-- <label class="item item-radio" ng-repeat="place in allNearPlaces">
+			<input type="radio" name="group">
+			<div class="item-content" value="">
+				{{place.name}}
+			</div>
+			<i class="radio-icon ion-checkmark"></i>
+		</label> -->
+  	</ion-content>
+</ion-modal-view>

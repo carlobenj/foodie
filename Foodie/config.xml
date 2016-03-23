@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<widget id="com.ionicframework.foodie590808" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Foodie</name>
+  <description>
+        An Ionic Framework and Cordova project.
+    </description>
+  <author email="hi@ionicframework" href="http://ionicframework.com/">
+      Ionic Framework Team
+    </author>
+  <content src="index.html"/>
+  <access origin="*"/>
+  <!--ALLOW LOCALHOST SERVICE-->
+  <access origin="http://10.0.3.2" subdomains="true"/>
+  <!---->
+  <preference name="webviewbounce" value="false"/>
+  <preference name="UIWebViewBounce" value="false"/>
+  <preference name="DisallowOverscroll" value="true"/>
+  <preference name="BackupWebStorage" value="none"/>
+  <feature name="StatusBar">
+    <param name="ios-package" value="CDVStatusBar" onload="true"/>
+  </feature>
+  <platform name="android">
+    <icon src="res/icons/android/drawable-hdpi/ic_launcher.png" density="ldpi" />
+    <icon src="res/icons/android/drawable-ldpi/ic_launcher.png" density="mdpi" />
+    <icon src="res/icons/android/drawable-mdpi/ic_launcher.png" density="hdpi" />
+    <icon src="res/icons/android/drawable-xhdpi/ic_launcher.png" density="xhdpi" />
+    <icon src="res/icons/android/drawable-xxhdpi/ic_launcher.png" density="xxhdpi" />    
+    <icon src="res/icons/android/drawable-xxxhdpi/ic_launcher.png" density="xxxhdpi" />
+  </platform>
+
+</widget>

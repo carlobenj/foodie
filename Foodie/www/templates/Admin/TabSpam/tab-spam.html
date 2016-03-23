@@ -1,0 +1,20 @@
+<ion-view title="Spam">
+  <ion-content class="has-header white">
+  		<div class="foodie-box has-image has-timestamp" ng-repeat="spam in spams" ng-click="gotoState(spam.report_ID, 0)" ng-if="spam.report_type == 0" >
+		    <img ng-cache ng-src="{{spam.foodict_image}}" />  		
+		  	<img ng-cache class="notification-image" ng-src="{{spam.report_item_image}}" />
+
+		  		<b ng-click="">{{spam.foodict_username}}</b> <span class="highlight-small" ng-if="spam.otherReportersCount > 0"> and {{spam.otherReportersCount}} other</span> reported a spam post titled <span class="highlight" ng-bind="spam.post_title"></span>.
+
+		  	<span class="timestamp" timeago="{{spam.report_date}}"></span>
+	  	</div>
+
+	  	<div class="foodie-box has-timestamp" ng-repeat="spam in spams" ng-click="gotoState(spam.report_ID, 10)"  ng-if="spam.report_type == 10" >
+		    <img ng-cache ng-src="{{spam.foodict_image}}" />  		
+
+		  		<b ng-click="">{{spam.foodict_username}}</b> <span class="highlight-small" ng-if="spam.otherReportersCount > 0"> and {{spam.otherReportersCount}} other</span> reported a spam comment "{{spam.comment_content}}"
+
+		  	<span class="timestamp" timeago="{{spam.report_date}}"></span>
+	  	</div>
+  </ion-content>
+</ion-view>

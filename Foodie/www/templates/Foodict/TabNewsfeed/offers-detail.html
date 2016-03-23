@@ -1,0 +1,141 @@
+<ion-view>
+  <ion-content class="has-header white">
+    <div>
+        <div class="promotion-image-wrapper">
+            <img class="offer-image" ng-cache ng-src="{{offer.offer_image}}">
+            <a class="fooducer-overlay" href="#/tab/newsfeed/fooducer/{{offer.fooducer_ID}}">
+                <img ng-cache ng-src="{{offer.fooducer_image}}" />
+                <b ng-bind="offer.fooducer_username"></b><br/>
+                <span ng-bind="offer.fooducer_company"></span>
+            </a>
+        </div>
+        <div class="promotion-header">
+            <b class="title" ng-bind="offer.offer_title"></b>
+            <p ng-bind="offer.offer_text"></p>
+        </div>
+        <div class="promotion-detail">            
+            <b>In detail:</b><br/>
+                <!-- <div class="detail"><i class="bullet"></i>Voucher is valid for a P1000-worth Gift Certificate valid on food and drinks at P.F. Chang’s for P699</div> -->
+                <div class="detail" ng-repeat="detail in offer.offer_details" ng-if="detail.trim().length > 0"><i class="bullet"></i>{{detail}}</div>
+                <!-- <div class="detail"><i class="bullet"></i>Unlimited vouchers may be purchased and used per visit/redemption</div>
+                <div class="detail"><i class="bullet"></i>Voucher is not valid for use on party packages, event and catering.</div>
+                <div class="detail"><i class="bullet"></i>Any unused amount will not be refunded; anything in excess of its value shall be paid directly to the merchant.</div>
+                <div class="detail"><i class="bullet"></i>Operating Hours: Sunday to Thursday, 11:00AM to 11:00PM & Friday to Saturday, 11:00AM to 1:00AM</div> -->
+            </p>
+        </div>
+        <div class="buy-now-button" ng-if="offer.offer_isAvailable" ng-click="availOffer(offer)">
+            <i class="icon ion-ios7-cart icon-accessory"></i>
+            <span>BUY NOW <span abbreviate="{{offer.offer_amount}}"></span> FOODIE POINTS</span>
+        </div>
+        <div class="list list-inset coupon-status">
+            <div class="item" ng-if="offer.offer_isAvailable">
+                <b>Remaining coupon: </b> {{offer.offer_max - offer.offer_availed}}
+            </div>
+            <div class="item" ng-if="offer.offer_isAvailable">
+                <b>Remaining time: </b>  <span time-remaining="{{offer.offer_expiry}}"></span>
+            </div>  
+            <div class="item">
+                <b>Claim from: </b> <span datetime="{{offer.offer_claim_from}}"></span>
+            </div>            
+            <div class="item">
+                <b>Claim until: </b> <span datetime="{{offer.offer_claim_to}}"></span>
+            </div>     
+        </div>
+        <div class="foodie-divider-xxs"></div>
+    </div>
+    <div ng-if="offer.availers.length > 0 && offer.availers != null">
+        <div class="item item-divider">Persons who availed</div>
+        <div class="foodie-box" ng-repeat="foodict in offer.availers">
+            <img ng-cache ng-src="{{foodict.foodict_image}}" class="profpic">
+            <b>{{foodict.user_name}}</b><br/>
+            <span class="name">{{foodict.voucher_code}}</span>
+        </div>
+    </div>  
+  </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-view title="FOODIE">
+  <ion-content class="has-header padding">
+    <h1>Home</h1>
+    <button class="button button-positive" ng-click="logout()">logout</button>    
+    <a class="button button-positive" href="#/tab/home/followers">Followers</a>    
+    <a class="button button-positive" href="#/tab/home/following">Following</a>
+    <div class="list list-inset">
+        <div class="item">          
+            <img ng-src="{{profileDetails.foodict_image}}" class="profpic"><br />
+            <label ng-bind="profileDetails.foodict_ID"></label><br />
+            <label ng-bind="profileDetails.user_ID"></label><br />        
+            <label ng-bind="profileDetails.foodict_username"></label><br />
+            <label ng-bind="profileDetails.foodict_first_name"></label><br />
+            <label ng-bind="profileDetails.foodict_middle_name"></label><br />
+            <label ng-bind="profileDetails.foodict_last_name"></label><br />
+            <label ng-bind="profileDetails.foodict_isMale"></label><br />
+            <label ng-bind="profileDetails.foodict_contact"></label><br />
+            <label ng-bind="profileDetails.foodict_country"></label><br />
+            <label ng-bind="profileDetails.foodict_city"></label><br />
+            <label ng-bind="profileDetails.foodict_foodie_points"></label><br />
+            <label ng-bind="profileDetails.user_email"></label>
+        </div>
+    </div>
+  </ion-content>
+</ion-view> -->

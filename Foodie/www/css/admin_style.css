@@ -1,0 +1,84 @@
+@font-face
+{
+font-family: Foodie;
+src: url('fonts/foodie.ttf'),
+     url('fonts/foodie.ttf'); /* IE9+ */
+}
+@font-face
+{
+font-family: IoniconsNew;
+src: url('fonts/ionicons-new.ttf'),
+     url('fonts/ionicons-new.ttf'); /* IE9+ */
+}
+
+
+.ion-android-alert:before
+{
+	font-family: "IoniconsNew";
+	display: inline-block;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-rendering: auto;
+	line-height: 1;
+}
+
+.ion-android-alert:before
+{	
+	content: "";
+}
+
+.highlight-small
+{
+	color: #9C1938;
+}
+
+.comment-review
+{
+	font-size: 18px;
+	line-height: 20px;
+	font-style: italic;
+	font-weight: normal;
+	margin: 5px 0;
+}
+
+.item-divider-admin
+{
+    padding: 8px 8px 8px 12px;
+    min-height: 30px;
+    background-color: #F5F5F5;
+    color: #444;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.no-border
+{
+	border: none;
+}
+
+/*======================= REPORT SPAM ===========================*/
+.report-actions
+{
+	padding: 20px 0;
+	text-align: center;
+}
+.report-action-button
+{
+	border-radius: 3px;
+	padding: 8px 15px;
+	line-height: 40px;
+	height: 33px;
+	background-color: #C5C5C5;
+	color: #FFFFFF;
+	margin-right: 5px;
+}
+
+.spam-stamp
+{
+	height: 10px;
+	line-height: 10px;
+	font-size: 10px;
+	color: #545454;
+}

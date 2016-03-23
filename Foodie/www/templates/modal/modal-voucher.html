@@ -1,0 +1,14 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-assertive">
+        <div class="buttons modal-buttons">
+            <i class="button button-icon ion-chevron-left modal-icons" ng-click="closeVoucherModal()"></i>  
+        </div> 
+    	<h1 class="title">{{focusedVoucher.offer_title}}</h1>
+    </ion-header-bar>
+    <ion-content scroll="false" class="padding foodie-modal-view">
+        <div class="foodie-qr-loader" ng-show="vouchercode == null"><i class="icon ion-loading-d"></i> Loading your coupon...</div>
+    	<div class="foodie-qr">
+			<qr ng-show="vouchercode != null" type-number="2" correction-level="'M'" size="800" text="vouchercode" image="false"></qr>
+    	</div> 	
+  	</ion-content>
+</ion-modal-view>

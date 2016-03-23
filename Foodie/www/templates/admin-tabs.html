@@ -1,0 +1,37 @@
+<!-- 
+  Create tabs with an icon and label, using the tabs-positive style. 
+  Each tab's child <ion-nav-view> directive will have its own 
+  navigation history that also transitions its views in and out.
+  
+  ////////HERE
+   ng-hide="$root.hideTabs"
+-->
+<ion-tabs class="tabs-icon-top tabs-background-default fooducer-tabs">
+
+
+<!--/////////////////////////////////////////////////////////////     ADMIN    /////////////////////////////////////////////////////////////////////-->
+
+  <!-- Profile Tab -->
+  <!-- <ion-tab title="Home" href="#/admin/home" icon="ion-ios7-home" ng-if="RestrictedFor('admin')">
+    <ion-nav-view name="admin-home"></ion-nav-view>
+  </ion-tab> -->
+
+
+  <!-- Spam Tab -->
+  <ion-tab title="Spam" href="#/admin/spam" icon="ion-loop" ng-if="RestrictedFor('admin')">
+    <ion-nav-view name="admin-spam"></ion-nav-view>
+  </ion-tab>
+
+
+  <!-- In-appropriate Tab -->
+  <ion-tab title="Inappropriate" href="#/admin/inappropriate" icon="ion-alert-circled" ng-if="RestrictedFor('admin')">
+    <ion-nav-view name="admin-inappropriate"></ion-nav-view>
+  </ion-tab>
+
+
+  <!-- Offensive Tab -->
+  <ion-tab title="Offensive" href="#/admin/offensive" icon="ion-thumbsdown" ng-if="RestrictedFor('admin')">
+    <ion-nav-view name="admin-offensive"></ion-nav-view>
+  </ion-tab>
+
+</ion-tabs>

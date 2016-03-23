@@ -1,0 +1,63 @@
+<ion-view title="Offers">
+  <ion-content class="has-header" ng-class="{'white' : offers.length == 0 || offers == undefined}">
+
+  		<!-- <div class="offer-card">
+  			<img class="offer-image" ng-cache ng-src="https://foodie.blob.core.windows.net/posts/10089"></img>
+  			<b>Hot Pot Ramen</b>
+  			<p>A delicious pot of ramen at the price of a penny. Great for a cold christmas weather. Best partnered with our Pork & Shrimp Gyouza...</p>
+  			<div class="offer-button">VIEW DETAILS</div>
+  		</div>
+  		<div class="foodie-divider-xxs gray"></div>   -->
+  		<div class="block-icon" ng-if="offers.length == 0 && isLocation">
+  			<i class="icon ion-pricetags"></i><br/>
+  			<h4>No offers nearby.</h4> 
+  			Gather as much points as you can!
+  		</div>
+  		<div class="block-icon" ng-if="offers.length == 0 && !isLocation">
+  			<i class="icon ion-pricetags"></i><br/>
+  			<h4>No offers available.</h4> 
+  			Gather as much points as you can!
+  		</div>
+  		<div ng-repeat="offer in offers">
+	  		<div class="offer-card">
+	  			<img class="offer-image" ng-cache ng-src="{{offer.offer_image}}"></img>
+	  			<b ng-if="offer.offer_title != null">{{offer.offer_title}}</b><b ng-if="offer.offer_title == null">No Title</b>
+	  			<p ng-if="offer.offer_text != null">{{offer.offer_text}}</p><p ng-if="offer.offer_text == null">No description available</p>
+	  			<a href="#/tab/offers/{{offer.offer_ID}}" class="offer-button">VIEW DETAILS</a>
+	  		</div>
+	    	<div class="foodie-divider-xxs divider-border gray"></div>  
+  		</div>	  		
+<!--LOADERS-->
+		<!-- <div class="list">
+			<div class="load-tool" ng-if="offers == undefined" class="load-tool-clear"><i class="icon ion-loading-d"></i>Fetching offers</div>
+		</div>  -->	
+  </ion-content>
+  <ion-footer-bar align-title="left" class="bar-assertive">
+  		<div class="foodcrawl-wrapper">
+  			<div class="foodcrawl-slider" ng-class="{'disabled-location' : !isLocation}">
+  				<span class="label">0km</span>
+		    	<input type="range" name="volume" min="0" max="150" ng-model="kilometerRadius" ng-change="waitDone()" ng-disabled="!isLocation">
+  				<span class="label">15km</span>
+  			</div>
+  			<i class="foodcrawl-icon" ng-class="{'foodie-location' : !isLocation, 'foodie-location-disabled' : isLocation}" ng-click="toggleLocation()"></i>
+  		</div>	     
+  </ion-footer-bar>
+</ion-view>
+
+<!-- <div class="list" ng-repeat="offer in offers">
+			<div class="item item-image ov-post-image">
+				<img ng-cache ng-src="{{offer.offer_image}}" />
+			</div>				
+			<div class="item item-avatar">				
+				<img ng-cache ng-src="{{offer.fooducer_image}}" class="profpic"/>
+				<div id="name" style="float:left;">
+					<h2>{{offer.fooducer_username}}</h2>
+					<p>2 minutes ago</p>
+				</div>
+				<a href="#/tab/offers/{{offer.offer_ID}}" style="text-decoration:none;">
+					<div id="offer" style="margin:0% 0% 0% 60%;padding: 5px 5px 5px 5px; border: 1px solid #ec9f1a; border-radius: 3px; color: #ec9f1a; font-weight: bold; font-family: Calibri, sans-serif; text-align: center; width: 40%;">
+					VIEW OFFER
+					</div>
+				</a>
+			</div>
+		</div> -->

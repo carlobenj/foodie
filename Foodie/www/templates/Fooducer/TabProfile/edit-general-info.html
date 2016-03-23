@@ -1,0 +1,46 @@
+<ion-view title="General Information">
+  <ion-content class="has-header white">
+  	<div class="list">
+
+  	  <div class="item item-divider">
+    	Company Information
+  	  </div>
+  	  <label class="item item-input">
+	    <span class="input-label">Name</span>
+	    <input type="text" placeholder="" ng-model="profileDetails.fooducer_company">
+	  </label>
+
+	  <label class="item item-input item-stacked-label">
+	    <span class="input-label">Description</span>
+	    <textarea class="company-description" placeholder="Short description about your company" ng-model="profileDetails.fooducer_about"></textarea>
+	  </label>
+
+	  <div class="item item-divider">
+    	Other Accounts
+  	  </div>
+	  <label class="item item-input">
+	    <span class="input-label">Facebook</span>
+	    <input type="text" placeholder="facebook/account" ng-model="profileDetails.fooducer_fb">
+	  </label>
+
+	  <label class="item item-input">
+	    <span class="input-label">Twitter</span>
+	    <input type="text" placeholder="twitter.com/account" ng-model="profileDetails.fooducer_twitter">
+	  </label>
+
+	  <label class="item item-input">
+	    <span class="input-label">Instagram</span>
+	    <input type="text" placeholder="instagram/account" ng-model="profileDetails.fooducer_ig">
+	  </label>
+
+	  <label class="item item-input">
+	    <span class="input-label">Website</span>
+	    <input type="text" placeholder="www.domain.com" ng-model="profileDetails.fooducer_website">
+	  </label>
+	</div>
+	  
+
+	<button class="button button-full button-assertive foodie-button-assertive" ng-click="saveChanges(profileDetails, 2)">Save</button>
+
+  </ion-content>
+</ion-view>

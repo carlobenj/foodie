@@ -1,0 +1,12 @@
+<ion-popover-view ng-controller="NewsfeedPopoverCtrl">
+    <ion-content>
+    	<div class="list">
+            <label class="item" ng-if="reportEnabled(focusedItem.foodict_ID)" ng-click="reportThis(focusedItem)">
+            	<i class="icon icon-button ion-flag"></i> Report
+            </label>
+            <label class="item" ng-if="deleteEnabled(focusedItem.foodict_ID)" ng-click="deleteThis(focusedItem)">
+            	<i class="icon button-clear ion-android-trash"></i> Delete
+            </label>
+        <div>
+    </ion-content>
+</ion-popover-view>

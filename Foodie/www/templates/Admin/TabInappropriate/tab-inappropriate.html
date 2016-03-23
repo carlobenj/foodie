@@ -1,0 +1,12 @@
+<ion-view title="Inappropriate">
+  <ion-content class="has-header white">
+    <div class="foodie-box has-image has-timestamp" ng-repeat="inappropriate in inappropriates" ng-click="gotoState(inappropriate.report_ID, 1)" ng-if="inappropriate.report_type == 1" >
+		<img ng-cache ng-src="{{inappropriate.foodict_image}}" />  		
+		<img ng-cache class="notification-image" ng-src="{{inappropriate.report_item_image}}" />
+
+		  	<b ng-click="">{{inappropriate.foodict_username}}</b> <span class="highlight-small" ng-if="inappropriate.otherReportersCount > 0"> and {{inappropriate.otherReportersCount}} other</span> reported an inappropriate post titled <span class="highlight" ng-bind="inappropriate.post_title"></span>.
+
+		<span class="timestamp" timeago="{{inappropriate.report_date}}"></span>
+	</div>
+  </ion-content>
+</ion-view>

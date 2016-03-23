@@ -1,0 +1,21 @@
+<ion-view title="Edit Profile">
+  <ion-content class="has-header white">
+  	<div class="list">
+		<a class="item item-icon-left item-icon-right" ng-click="takeNewPhoto()">
+	  	  <img ng-cache class="icon profile-thumbnail profpic" ng-src="{{profileDetails.foodict_image}}">
+		  &nbsp;&nbsp;&nbsp;&nbsp;Change Profile picture
+		  <i class="icon ion-chevron-right icon-accessory"></i>
+		</a>
+	  	<a class="item item-icon-left item-icon-right" href="#/tab/newsfeed/me/edit/general-info">
+		  <i class="icon edit-icons ion-android-information"></i>
+		  General information
+		  <i class="icon ion-chevron-right icon-accessory"></i>
+		</a>
+	  	<a class="item item-icon-left item-icon-right" href="#/tab/newsfeed/me/edit/contact-info">
+	  	  <i class="icon edit-icons ion-android-earth"></i>
+		  Contact and Location information
+		  <i class="icon ion-chevron-right icon-accessory"></i>
+		</a>
+	</div>	
+  </ion-content>
+</ion-view>

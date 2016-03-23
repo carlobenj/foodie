@@ -1,0 +1,22 @@
+<ion-view title="Change Email Address">
+  <ion-content class="has-header white" ng-controller="SettingsCtrl">
+  	<div class="list">
+
+  	  <div class="item item-divider">
+    	Email Address
+  	  </div>
+	  <label class="item item-input">
+	    <span class="input-label">Current</span>
+	    <input type="text" placeholder="None" ng-model="current_email">
+	  </label>
+	  <label class="item item-input">
+	    <span class="input-label">New</span>
+	    <input type="text" placeholder="None" ng-model="new_email">
+	  </label>
+	</div>
+	  
+
+	  <button class="button button-full button-assertive foodie-button-assertive" ng-click="saveChanges(accountDetails, 1)">Save</button>
+
+  </ion-content>
+</ion-view>

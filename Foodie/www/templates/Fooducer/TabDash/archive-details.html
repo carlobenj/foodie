@@ -1,0 +1,63 @@
+<ion-view title="Archives">
+  <ion-content class="has-header white">
+  	<!--CHART-->
+  	  <div class="archive-padding">
+	      <div class="view-chart-container"> 
+	      	<div class="title">{{archive.offer_title}}</div>   
+	      	<div class="sub-title">Bought and Claimed Coupons</div>   
+	        <canvas id="claimBoughtAreaChart" class="area-chart"></canvas>
+	        <div class="legend">
+		        <div class="legend-item"><i style="background-color: rgb(255, 255, 255);">&nbsp;</i> Bought</div>   
+		        <div class="legend-item"><i style="background-color: rgb(255, 217, 107);">&nbsp;</i> Claimed</div>     
+	        </div>
+	      </div>
+  	  </div>
+  	  <div class="foodie-divider-xxs"></div>
+	  <div class="item item-icon-right archive-show-details" ng-click="openCouponDetails(archive.offer_ID)">
+	      Show coupon details
+		  <i class="icon ion-chevron-right icon-accessory"></i>
+	  </div>
+  	  <div class="foodie-divider-xxs"></div>
+  	  
+  	  <!-- ARCHIVE SUMMARY -->
+	  <div class="item item-divider">Summary</div>
+	  <div class="archive-summary">
+	  	  This promo started last <span datetime="{{archive.offer_post_date}}"></span>. 
+	  	  There were 
+	  	  			<span ng-if="archive.totalBoughtCount > 0"> {{archive.totalBoughtCount}} bought coupons and </span> 
+	  	  			<span ng-if="archive.totalBoughtCount == 0"> no coupons bought.</span>
+	  	  <span ng-if="archive.totalBoughtCount > 0">
+	  	  	out of that, there were {{archive.totalClaimedCount}} claimed.
+	  	  </span>
+	      The promotion ended on <span datetime="{{archive.offer_expiry}}"></span>.
+	      <span ng-if="archive.totalBoughtCount > 0">
+	      	  Coupons can be claimed until <span datetime="{{archive.offer_claim_to}}"></span>. 
+		      <span ng-if="archive.foodiePointsEarned > 0">
+		  	  	You earned {{archive.foodiePointsEarned}} points.
+		  	  </span>
+	      </span>
+	  </div>
+
+      <!-- PER TRANSACTION -->
+	  <div class="item item-divider">Transaction History</div>	        
+      <div ng-if="archive.transactionHistory.length > 0 && archive.transactionHistory != null">
+	        <div class="list-highlight bottom-border">
+	        	Started last <span datetime="{{archive.offer_post_date}}"></span>
+	        </div>
+	        <div class="foodie-box" ng-repeat="transaction in archive.transactionHistory">
+	            <img ng-cache ng-src="{{transaction.foodict_image}}" class="profpic">
+	            <b>{{transaction.user_name}} </b>
+	            <span ng-if="transaction.type == 0"> bought a coupon</span>
+	            <span ng-if="transaction.type == 1"> claimed a coupon</span>
+	            <br/>
+	            <span class="name" datetime="{{transaction.transaction_date}}"></span>
+	        </div>
+	        <div class="list-highlight" ng-if="archive.claimingIsDone">
+	        	Claiming ended last <span datetime="{{archive.offer_claim_to}}"></span>
+	        </div>
+      </div>  
+      <div class="list-highlight" ng-if="archive.transactionHistory == null || archive.transactionHistory.length == 0">
+	      	No claim history available
+	  </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,64 @@
+<ion-view title="Profile">
+  <ion-content class="has-header white">
+    <div class="profile-avatar-wrapper">
+        <div class="featured-photo-wrapper">                
+            <img ng-cache class="featured-photo" ng-src="{{profileDetails.foodict_image}}">
+        </div> 
+        <ion-slide-box>
+            <ion-slide>   
+                <!-- <div class="profile-picture-wrapper">            
+                    <img ng-cache class="profile-picture" ng-src="{{profileDetails.foodict_image}}">
+                </div>
+                <span class="profile-follow-action settings" ng-if="checkIfMe(profileDetails.foodict_ID)" ng-click="profileAction()"><i></i> </span> -->
+                <div class="profile-wrapper">
+                    <div class="spacer"></div>         
+                    <img ng-cache class="profile-image" ng-src="{{profileDetails.foodict_image}}">
+                    <div class="spacer">
+                        <span class="profile-new-follow-action settings" ng-if="checkIfMe(profileDetails.foodict_ID)" ng-click="profileAction()"><i></i> </span>
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="other-profile-details">
+                    <span>{{profileDetails.foodict_first_name}} {{profileDetails.foodict_middle_name}} {{profileDetails.foodict_last_name}}</span><br/>
+                    <span>{{profileDetails.user_email}}</span><br/>
+                    <span ng-if="profileDetails.foodict_isMale">Male</span><span ng-if="!profileDetails.foodict_isMale">Female</span>
+                    <span ng-if="profileDetails.foodict_city != null"> - {{profileDetails.foodict_city}}</span>
+                    <span ng-if="profileDetails.foodict_country != null">, {{profileDetails.foodict_country}}</span>
+                </div>                
+            </ion-slide>
+        </ion-slide-box>
+    </div>
+    <div class="profile-detail-bar">
+        <div class="detail-tab">
+            <div class="value" abbreviate="{{profileDetails.count_post}}"></div>
+            <div class="title">POSTS</div>
+        </div>
+        <div class="detail-tab">
+            <div class="value" abbreviate="{{profileDetails.count_point}}"></div>
+            <div class="title">POINTS</div>
+        </div>
+        <a class="detail-tab" href="#/tab/home/followers">        
+            <div class="value" abbreviate="{{profileDetails.count_follower}}"></div>
+            <div class="title">FOLLOWER</div>
+        </a>
+        <a class="detail-tab" href="#/tab/home/following">
+            <div class="value" abbreviate="{{profileDetails.count_following}}"></div>
+            <div class="title">FOLLOWING</div>
+        </a>
+    </div>   
+    <div class="block-icon smaller" ng-if="gridPosts.length == 0">
+        <i class="icon ion-images"></i><br/>
+        No posts yet.
+    </div>
+    <div class="grid-posts-wrapper" ng-if="!isLocked">
+        <div ng-repeat="post in gridPosts">
+            <a href="#/tab/home/post/{{post.post_ID}}"><img ng-cache ng-src="{{post.post_image}}"></a>
+        </div>
+    </div>
+    <div class="locked-account" ng-if="isLocked">
+        <i class="icon ion-locked"></i><br/>
+        Private user
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,150 @@
+<ion-view title="Profile">
+  <ion-content class="has-header white">
+    <div class="profile-avatar-wrapper">
+        <div class="featured-photo-wrapper">                
+            <img ng-cache class="featured-photo" ng-src="{{profileDetails.foodict_image}}">
+        </div> 
+        <ion-slide-box>
+            <ion-slide>   
+                <!-- <div class="profile-picture-wrapper">            
+                    <img ng-cache class="profile-picture" ng-src="{{profileDetails.foodict_image}}">
+                </div> -->
+                
+                <div class="profile-wrapper">
+                    <div class="spacer"></div>         
+                    <img ng-cache class="profile-image" ng-src="{{profileDetails.foodict_image}}">
+                    <div class="spacer">
+                        <span class="profile-new-follow-action follow" ng-if="!profileDetails.isFollowed && profileDetails.follow_status == 0" ng-click="followThis(profileDetails)"><i></i> </span>
+                        <span class="profile-new-follow-action following" ng-if="profileDetails.isFollowed && profileDetails.follow_status == 1" ng-click="unfollowThis(profileDetails, 'Unfollow')"><i></i> </span>
+                        <span class="profile-new-follow-action pending" ng-if="profileDetails.isFollowed && profileDetails.follow_status == 2" ng-click="unfollowThis(profileDetails,  'Cancel Request')"><i></i> </span>
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="other-profile-details">
+                    <span>{{profileDetails.foodict_first_name}} {{profileDetails.foodict_middle_name}} {{profileDetails.foodict_last_name}}</span><br/>
+                    <span>{{profileDetails.user_email}}</span><br/>
+                    <span ng-if="profileDetails.foodict_isMale">Male</span><span ng-if="!profileDetails.foodict_isMale">Female</span>
+                    <span ng-if="profileDetails.foodict_city != null"> - {{profileDetails.foodict_city}}</span>
+                    <span ng-if="profileDetails.foodict_country != null">, {{profileDetails.foodict_country}}</span>
+                </div>                
+            </ion-slide>
+        </ion-slide-box>
+    </div>
+    <div class="profile-detail-bar">
+        <div class="detail-tab">
+            <div class="value" abbreviate="{{profileDetails.count_post}}"></div>
+            <div class="title">POSTS</div>
+        </div>
+        <div class="detail-tab">
+            <div class="value" abbreviate="{{profileDetails.count_point}}"></div>
+            <div class="title">POINTS</div>
+        </div>
+        <a class="detail-tab" href="#/tab/newsfeed/otherprofile/{{profileDetails.foodict_ID}}/followers">        
+            <div class="value" abbreviate="{{profileDetails.count_follower}}"></div>
+            <div class="title">FOLLOWER</div>
+        </a>
+        <a class="detail-tab" href="#/tab/newsfeed/otherprofile/{{profileDetails.foodict_ID}}/following">
+            <div class="value" abbreviate="{{profileDetails.count_following}}"></div>
+            <div class="title">FOLLOWING</div>
+        </a>
+    </div>   
+    <div class="block-icon smaller" ng-if="gridPosts.length == 0 && !isLocked">
+        <i class="icon ion-images"></i><br/>
+        No posts yet.
+    </div>     
+    <div class="grid-posts-wrapper" ng-if="!isLocked">
+        <div ng-repeat="post in gridPosts">
+            <a href="#/tab/newsfeed/{{post.post_ID}}"><img ng-cache ng-src="{{post.post_image}}"></a>
+        </div>
+    </div>  
+    <div class="locked-account" ng-if="isLocked">
+        <i class="icon ion-locked"></i><br/>
+        Private user
+    </div>
+  </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-view title="FOODIE">
+  <ion-content class="has-header padding">
+    <h1>Home</h1>
+    <button class="button button-positive" ng-click="logout()">logout</button>    
+    <a class="button button-positive" href="#/tab/home/followers">Followers</a>    
+    <a class="button button-positive" href="#/tab/home/following">Following</a>
+    <div class="list list-inset">
+        <div class="item">          
+            <img ng-cache ng-src="{{profileDetails.foodict_image}}" class="profpic"><br />
+            <label ng-bind="profileDetails.foodict_ID"></label><br />
+            <label ng-bind="profileDetails.user_ID"></label><br />        
+            <label ng-bind="profileDetails.foodict_username"></label><br />
+            <label ng-bind="profileDetails.foodict_first_name"></label><br />
+            <label ng-bind="profileDetails.foodict_middle_name"></label><br />
+            <label ng-bind="profileDetails.foodict_last_name"></label><br />
+            <label ng-bind="profileDetails.foodict_isMale"></label><br />
+            <label ng-bind="profileDetails.foodict_contact"></label><br />
+            <label ng-bind="profileDetails.foodict_country"></label><br />
+            <label ng-bind="profileDetails.foodict_city"></label><br />
+            <label ng-bind="profileDetails.foodict_foodie_points"></label><br />
+            <label ng-bind="profileDetails.user_email"></label>
+        </div>
+    </div>
+  </ion-content>
+</ion-view> -->

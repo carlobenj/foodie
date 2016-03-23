@@ -1,0 +1,179 @@
+<ion-view title="Dashboard">
+  <ion-content class="has-header">
+   <div class="list padding white">
+        <!-- <div class="view-chart-container container-33"> 
+            <div class="tile-icon icon ion-arrow-graph-up-right"></div>
+            <div class="tile-title">ADVERTISE</div>
+        </div>
+        <div class="view-chart-container container-33">  
+            <div class="tile-icon icon ion-archive"></div>
+            <div class="tile-title">ARCHIVES</div>  
+        </div>
+        <div class="view-chart-container container-33">  
+            <div class="tile-icon icon ion-email"></div>
+            <div class="tile-title">FOODIE NEWS</div>  
+        </div> -->
+        <div class="dashboard-tiles-wrapper">
+            <div class="tiles-33" ng-click="goTo('advertise')"> 
+                <div class="tile-icon icon ion-arrow-graph-up-right"></div>
+                <div class="tile-title">ADVERTISE</div>
+            </div>
+            <div class="tiles-33" ng-click="goTo('archives')">
+                <div class="tile-icon icon ion-archive"></div>
+                <div class="tile-title">ARCHIVES</div>  
+            </div>
+            <div class="tiles-33" ng-click="goTo('foodie-news')">
+                <div class="tile-icon icon ion-email"></div>
+                <div class="tile-title">FOODIE NEWS</div>   
+            </div>
+        </div>
+        <div class="view-chart-container">    
+            <div class="title">{{dashboard.view_data[6].allFoodicts.length}} views today</div>
+            <div class="sub-title">Daily average: {{average_views}}</div>     
+            <canvas id="viewsLineChart" class="area-chart"></canvas>
+        </div>
+        <div class="view-chart-container">    
+            <!-- <div class="title">{{dashboard.fooducer_total_voucher_claimed}} total claimed ({{total_bar_claimed}}%)</div>
+            <div class="sub-title">Out of {{dashboard.fooducer_total_voucher_bought}} total bought coupons</div>   -->   
+            <div class="title">Overall claimed coupons</div>
+            <div class="sub-title">{{dashboard.fooducer_total_voucher_claimed}} out of {{dashboard.fooducer_total_voucher_bought}} coupons claimed</div>   
+            <canvas id="voucherPieChart" class="area-chart"></canvas>
+        </div>
+       <!--  <h1>{{dashboard.fooducer_foodie_points}} FP</h1><b>{{dashboard.fooducer_username}}</b> {{dashboard.fooducer_company}}
+
+        <br/><br/>
+        Active vouchers
+        <div class="dashbar-track">
+            <div class="dashbar-value value-released" ng-style="{'width' : active_bar_released + '%'}">
+            </div>   
+            <div class="dashbar-value value-bought" ng-style="{'width' : active_bar_bought + '%'}">
+            </div>               
+            <div class="dashbar-value value-claimed" ng-style="{'width' : active_bar_claimed + '%'}">
+            </div>           
+        </div>
+         {{dashboard.fooducer_active_voucher_claimed}} Claimed ({{active_bar_claimed}}%) / {{dashboard.fooducer_active_voucher_bought}} Bought ({{active_bar_bought}}%) / {{dashboard.fooducer_active_voucher_released}} Released
+
+        <br/><br/>
+        Out of {{dashboard.fooducer_total_voucher_released}} released vouchers
+        <div class="dashbar-track">      
+            <div class="dashbar-value value-bought" ng-style="{'width' : total_bar_bought + '%'}">   
+            </div>                 
+            <div class="dashbar-value value-claimed" ng-style="{'width' : total_bar_claimed + '%'}"> 
+            </div>      
+            <div class="dashbar-percentage percentage-bought" ng-class="{'percentage-dark': total_bar_bought < 55}">{{total_bar_bought}}%</div>        
+            <div class="dashbar-percentage percentage-claimed" ng-class="{'percentage-dark': total_bar_claimed < 55}">{{total_bar_claimed}}%</div>                                 
+        </div>
+        {{dashboard.fooducer_total_voucher_bought}} Bought ({{total_bar_bought}}%) / {{dashboard.fooducer_total_voucher_claimed}} Claimed ({{total_bar_claimed}}%)
+
+        <br />
+        <br />
+        <div class="row">
+          <div class="col"><h1><i class="icon assertive ion-ribbon-b"></i> {{dashboard.fooducer_promotion_seed}}st</h1> promotion seed</div>
+          <div class="col"><h1><i class="icon assertive ion-pricetags"></i> {{dashboard.fooducer_offer_active}}</h1> Active offers</div>
+          <div class="col" ng-click="scanQR()"><h1><i class="icon assertive ion-filing"></i> {{dashboard.fooducer_offer_expired}}</h1> Expired offers</div>
+        </div> -->
+    </div>
+  </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="dashboard-tiles-wrapper">
+        <div class="dashboard-tile post-promo">
+            <i class="icon edit-icons ion-person"></i>
+        </div>
+        <div class="dashboard-tile scan-coupon">
+        </div>
+        <div class="dashboard-tile advertise">
+        </div>
+        <div class="dashboard-tile edit-profile">
+        </div>
+        <div class="dashboard-tile settings">
+        </div>
+        <div class="dashboard-tile logout">
+        </div>
+    </div>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-view title="FOODIE">
+  <ion-content class="has-header padding">
+    <h1>Home</h1>
+    <button class="button button-positive" ng-click="logout()">logout</button>    
+    <a class="button button-positive" href="#/tab/home/followers">Followers</a>    
+    <a class="button button-positive" href="#/tab/home/following">Following</a>
+    <div class="list list-inset">
+        <div class="item">          
+            <img ng-src="{{profileDetails.foodict_image}}" class="profpic"><br />
+            <label ng-bind="profileDetails.foodict_ID"></label><br />
+            <label ng-bind="profileDetails.user_ID"></label><br />        
+            <label ng-bind="profileDetails.foodict_username"></label><br />
+            <label ng-bind="profileDetails.foodict_first_name"></label><br />
+            <label ng-bind="profileDetails.foodict_middle_name"></label><br />
+            <label ng-bind="profileDetails.foodict_last_name"></label><br />
+            <label ng-bind="profileDetails.foodict_isMale"></label><br />
+            <label ng-bind="profileDetails.foodict_contact"></label><br />
+            <label ng-bind="profileDetails.foodict_country"></label><br />
+            <label ng-bind="profileDetails.foodict_city"></label><br />
+            <label ng-bind="profileDetails.foodict_foodie_points"></label><br />
+            <label ng-bind="profileDetails.user_email"></label>
+        </div>
+    </div>
+  </ion-content>
+</ion-view> -->

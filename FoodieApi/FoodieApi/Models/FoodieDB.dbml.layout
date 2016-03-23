@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.5, 26.125" name="FoodieDB">
+  <DataContextMoniker Name="/FoodieDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="2f61d4af-5ae9-48b8-bd8c-8c0ff1c87016" absoluteBounds="9, 16.5, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/FoodieDBDataContext/bite" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0c23615f-445a-487c-9221-98796f388e6a" absoluteBounds="9.015, 16.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8bea233a-6a46-40ce-94f9-e03c4ef2c7ef" absoluteBounds="9, 19.25, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/FoodieDBDataContext/comment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="27426294-6387-44b2-ab13-b6dd0e563022" absoluteBounds="9.015, 19.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f76a6b32-45f4-4b25-aef3-1aebf70e1e45" absoluteBounds="3.5, 5.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/FoodieDBDataContext/report" />
+      <nestedChildShapes>
+        <elementListCompartment Id="98e7755c-313b-4efa-843a-22c4009776ed" absoluteBounds="3.515, 5.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="76804907-b456-48af-b851-85fb8b92927e" absoluteBounds="6.5, 13, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/FoodieDBDataContext/follow" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b933363c-447b-49a5-885e-b85917f8155a" absoluteBounds="6.5150000000000006, 13.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3bbcd651-3eb5-41b1-858c-244adb328a2a" absoluteBounds="7.5, 22.75, 2, 3.1170068359375">
+      <DataClassMoniker Name="/FoodieDBDataContext/post" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ea8bf922-1f6b-4408-9c48-49fa30f74522" absoluteBounds="7.515, 23.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.2187475 : 22.75); (8.2187475 : 17.1931469726563); (9 : 17.1931469726563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FoodieDBDataContext/post/post_bite" />
+      <nodes>
+        <classShapeMoniker Id="3bbcd651-3eb5-41b1-858c-244adb328a2a" />
+        <classShapeMoniker Id="2f61d4af-5ae9-48b8-bd8c-8c0ff1c87016" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.25 : 22.75); (9.25 : 21.0208968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/FoodieDBDataContext/post/post_comment" />
+      <nodes>
+        <classShapeMoniker Id="3bbcd651-3eb5-41b1-858c-244adb328a2a" />
+        <classShapeMoniker Id="8bea233a-6a46-40ce-94f9-e03c4ef2c7ef" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4517e81b-5a38-4e16-90fa-50f21ecfd6a8" absoluteBounds="4.125, 12.25, 2, 3.1170068359375">
+      <DataClassMoniker Name="/FoodieDBDataContext/foodict" />
+      <nestedChildShapes>
+        <elementListCompartment Id="083a4c98-22c1-4009-bcad-303bc046db16" absoluteBounds="4.14, 12.71, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.125 : 15.3670068359375); (5.125 : 16.8153209863281); (5.57291916666667 : 16.8153209863281 : JumpStart); (5.73958583333333 : 16.8153209863281 : JumpEnd); (9 : 16.8153209863281)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FoodieDBDataContext/foodict/foodict_bite" />
+      <nodes>
+        <classShapeMoniker Id="4517e81b-5a38-4e16-90fa-50f21ecfd6a8" />
+        <classShapeMoniker Id="2f61d4af-5ae9-48b8-bd8c-8c0ff1c87016" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.6562525 : 15.3670068359375); (5.6562525 : 20.1354484049479); (8.13541416666667 : 20.1354484049479 : JumpStart); (8.30208083333333 : 20.1354484049479 : JumpEnd); (9 : 20.1354484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/FoodieDBDataContext/foodict/foodict_comment" />
+      <nodes>
+        <classShapeMoniker Id="4517e81b-5a38-4e16-90fa-50f21ecfd6a8" />
+        <classShapeMoniker Id="8bea233a-6a46-40ce-94f9-e03c4ef2c7ef" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.125 : 13.7892976888021); (6.5 : 13.7892976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/FoodieDBDataContext/foodict/foodict_follow" />
+      <nodes>
+        <classShapeMoniker Id="4517e81b-5a38-4e16-90fa-50f21ecfd6a8" />
+        <classShapeMoniker Id="76804907-b456-48af-b851-85fb8b92927e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.125 : 13.3321488444011); (6.5 : 13.3321488444011)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/FoodieDBDataContext/foodict/foodict_follow1" />
+      <nodes>
+        <classShapeMoniker Id="4517e81b-5a38-4e16-90fa-50f21ecfd6a8" />
+        <classShapeMoniker Id="76804907-b456-48af-b851-85fb8b92927e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5937475 : 15.3670068359375); (4.5937475 : 24.3085034179688); (7.5 : 24.3085034179688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/FoodieDBDataContext/foodict/foodict_post" />
+      <nodes>
+        <classShapeMoniker Id="4517e81b-5a38-4e16-90fa-50f21ecfd6a8" />
+        <classShapeMoniker Id="3bbcd651-3eb5-41b1-858c-244adb328a2a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="1c20c32a-cb1d-4095-9d8f-883726b366e8" absoluteBounds="1.125, 9.625, 2, 1.9631982421875">
+      <DataClassMoniker Name="/FoodieDBDataContext/user" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f5963b25-d8a0-4216-88f4-1c1cb61b811e" absoluteBounds="1.1399999999999997, 10.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.125 : 9.625); (2.125 : 6.20274983723958); (3.5 : 6.20274983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/FoodieDBDataContext/user/user_report" />
+      <nodes>
+        <classShapeMoniker Id="1c20c32a-cb1d-4095-9d8f-883726b366e8" />
+        <classShapeMoniker Id="f76a6b32-45f4-4b25-aef3-1aebf70e1e45" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.84375 : 11.5881982421875); (2.84375 : 12.96875); (4.125 : 12.96875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FoodieDBDataContext/user/user_foodict" />
+      <nodes>
+        <classShapeMoniker Id="1c20c32a-cb1d-4095-9d8f-883726b366e8" />
+        <classShapeMoniker Id="4517e81b-5a38-4e16-90fa-50f21ecfd6a8" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ea6aeea2-c809-49df-ae92-44cfe5b10168" absoluteBounds="4.375, 7.875, 2, 4.0785139973958326">
+      <DataClassMoniker Name="/FoodieDBDataContext/fooducer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="656da9d5-9ced-4a58-a2b4-6aca4f34fdad" absoluteBounds="4.39, 8.335, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.125 : 10.6065991210937); (4.375 : 10.6065991210937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/FoodieDBDataContext/user/user_fooducer" />
+      <nodes>
+        <classShapeMoniker Id="1c20c32a-cb1d-4095-9d8f-883726b366e8" />
+        <classShapeMoniker Id="ea6aeea2-c809-49df-ae92-44cfe5b10168" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4d68ea89-58ff-4fe7-b044-e9cf75faa6b1" absoluteBounds="9, 5.375, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/FoodieDBDataContext/view" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f2cc7992-0326-4fb0-b6e7-b0aaef04c09a" absoluteBounds="9.015, 5.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.125 : 12.6546541341146); (10.65625 : 12.6546541341146); (10.65625 : 7.14589680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/FoodieDBDataContext/foodict/foodict_view" />
+      <nodes>
+        <classShapeMoniker Id="4517e81b-5a38-4e16-90fa-50f21ecfd6a8" />
+        <classShapeMoniker Id="4d68ea89-58ff-4fe7-b044-e9cf75faa6b1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.375 : 8.40625); (10.4531225 : 8.40625); (10.4531225 : 7.14589680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/FoodieDBDataContext/fooducer/fooducer_view" />
+      <nodes>
+        <classShapeMoniker Id="ea6aeea2-c809-49df-ae92-44cfe5b10168" />
+        <classShapeMoniker Id="4d68ea89-58ff-4fe7-b044-e9cf75faa6b1" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d3ab2460-3641-41a1-9851-eedaa982bd7b" absoluteBounds="11.25, 9.375, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/FoodieDBDataContext/voucher" />
+      <nestedChildShapes>
+        <elementListCompartment Id="08b13c28-a791-41aa-910e-af2125571604" absoluteBounds="11.265, 9.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.125 : 12.4819787011719); (10.5729166666667 : 12.4819787011719 : JumpStart); (10.7395833333333 : 12.4819787011719 : JumpEnd); (12.25 : 12.4819787011719); (12.25 : 11.7228011067708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FoodieDBDataContext/foodict/foodict_voucher" />
+      <nodes>
+        <classShapeMoniker Id="4517e81b-5a38-4e16-90fa-50f21ecfd6a8" />
+        <classShapeMoniker Id="d3ab2460-3641-41a1-9851-eedaa982bd7b" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="2867971d-65c5-4b96-b6d0-55be707db081" absoluteBounds="8.25, 9, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/FoodieDBDataContext/offer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cdafe554-2835-4f92-bf52-73b00fb1cc23" absoluteBounds="8.265, 9.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10.25 : 10.5489005533854); (11.25 : 10.5489005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/FoodieDBDataContext/offer/offer_voucher" />
+      <nodes>
+        <classShapeMoniker Id="2867971d-65c5-4b96-b6d0-55be707db081" />
+        <classShapeMoniker Id="d3ab2460-3641-41a1-9851-eedaa982bd7b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.375 : 10.4767569986979); (8.25 : 10.4767569986979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/FoodieDBDataContext/fooducer/fooducer_offer" />
+      <nodes>
+        <classShapeMoniker Id="ea6aeea2-c809-49df-ae92-44cfe5b10168" />
+        <classShapeMoniker Id="2867971d-65c5-4b96-b6d0-55be707db081" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e777aefc-7bb5-4a11-8cc6-5b62282c541a" absoluteBounds="0.875, 14, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/FoodieDBDataContext/notification" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8c2c3809-3a24-45a6-a12e-3cc75d5708e3" absoluteBounds="0.89000000000000057, 14.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

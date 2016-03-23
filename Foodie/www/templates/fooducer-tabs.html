@@ -1,0 +1,60 @@
+<!-- 
+  Create tabs with an icon and label, using the tabs-positive style. 
+  Each tab's child <ion-nav-view> directive will have its own 
+  navigation history that also transitions its views in and out.
+  
+  ////////HERE
+   ng-hide="$root.hideTabs"
+-->
+<ion-tabs class="tabs-icon-top tabs-background-default fooducer-tabs" ng-controller="FooducerTabsCtrl">
+
+
+<!--/////////////////////////////////////////////////////////////     FOODUCER    /////////////////////////////////////////////////////////////////////-->
+
+  <!-- Dashboard Tab -->
+  <ion-tab title="Dashboard" href="#/fooducer/dash" icon="ion-stats-bars" ng-if="RestrictedFor('fooducer')">
+    <ion-nav-view name="fooducer-dash"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Promotions Tab -->
+  <ion-tab title="My Promotion" href="#/fooducer/promotion" icon="ion-briefcase" ng-if="RestrictedFor('fooducer')">
+    <ion-nav-view name="fooducer-promotion"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Notification Tab -->
+  <ion-tab title="Validate" href="#/fooducer/validate" icon="ion-qr-scanner" ng-if="RestrictedFor('fooducer')">
+    <ion-nav-view name="fooducer-validate"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Profile Tab -->
+  <ion-tab title="Profile" href="#/fooducer/profile" icon="ion-ios7-home" ng-if="RestrictedFor('fooducer')">
+    <ion-nav-view name="fooducer-profile"></ion-nav-view>
+  </ion-tab>
+
+</ion-tabs>
+
+
+
+
+
+
+<!-- <ion-tabs class="tabs-striped tabs-top tabs-background-default tabs-assertive" ng-controller="FooducerTabsCtrl">
+
+  <ion-tab title="Dashboard" href="#/fooducer/dash" ng-if="RestrictedFor('fooducer')">
+    <ion-nav-view name="fooducer-dash"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="My Promotions" href="#/fooducer/promotion" ng-if="RestrictedFor('fooducer')">
+    <ion-nav-view name="fooducer-promotion"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="Notifications" href="#/fooducer/notification" ng-if="RestrictedFor('fooducer')">
+    <ion-nav-view name="fooducer-notification"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="Profile" href="#/fooducer/profile" ng-if="RestrictedFor('fooducer')">
+    <ion-nav-view name="fooducer-profile"></ion-nav-view>
+  </ion-tab>
+
+</ion-tabs>
+ -->

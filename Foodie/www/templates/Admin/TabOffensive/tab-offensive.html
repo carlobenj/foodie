@@ -1,0 +1,11 @@
+<ion-view title="Offensive">
+  <ion-content class="has-header white">
+	  	<div class="foodie-box has-timestamp" ng-repeat="offensive in offensives" ng-click="gotoState(offensive.report_ID,11)"  ng-if="offensive.report_type==11" >
+		    <img ng-cache ng-src="{{offensive.foodict_image}}" />  		
+
+		  		<b ng-click="">{{offensive.foodict_username}}</b> <span class="highlight-small" ng-if="offensive.otherReportersCount > 0"> and {{offensive.otherReportersCount}} other</span> reported an offensive comment "{{offensive.comment_content}}"
+
+		  	<span class="timestamp" timeago="{{offensive.report_date}}"></span>
+	  	</div>
+  </ion-content>
+</ion-view>

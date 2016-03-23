@@ -1,0 +1,49 @@
+<ion-view title="Spammed item">
+  <ion-content class="has-header white">
+  		<div class="foodie-divider-xxs"></div>
+
+
+  		<!--TYPE 0 -->
+  		<div ng-if="spam.report_type == 0" >		  	
+	    	<div class="foodie-box-thumbnail no-border">
+	          <img class="thumbnail" ng-cache ng-src="{{spam.post_image}}"></img>
+	          <b class="title" ng-bind="spam.post_title"></b>
+	          <p class="description" ng-bind="spam.post_text"></p>
+	          <span class="spam-stamp">Last <span datetime="{{spam.report_date}}"></span> · <span>{{spam.reporters.length}} reporter(s)</span></span>
+	        </div>
+	  		<div class="report-actions">
+	  			<span class="report-action-button" ng-click="penalize(spam.report_ID, spam.report_source_item_ID, 0, spam.bitesCount)">Penalize {{spam.bitesCount}}FP</span>
+	  			<span class="report-action-button" ng-click="delete(spam.report_ID, spam.report_source_item_ID, 0)">Delete item</span>
+	  			<span class="report-action-button" ng-click="ignore(spam.report_ID, spam.report_source_item_ID, 0)">Ignore</span>
+	  		</div>
+  		</div>
+
+  		<!--TYPE 10 -->
+  		<div ng-if="spam.report_type == 10" >
+		  	<div class="foodie-box has-timestamp no-border">
+			    <img ng-cache ng-src="{{spam.foodict_image}}" />  		
+
+			  		<b ng-click="">{{spam.foodict_username}}</b> 
+			  		<br/><p class="comment-review">"{{spam.comment_content}}"</p>
+
+			  	<span class="timestamp">Last <span datetime="{{spam.report_date}}"></span> · <span>{{spam.reporters.length}} reporter(s)</span></span>
+		  	</div>
+	  		<div class="report-actions">
+	  			<span class="report-action-button" ng-click="penalize(spam.report_ID, spam.report_source_item_ID, 10, 10)">Penalize 10FP</span>
+	  			<span class="report-action-button" ng-click="delete(spam.report_ID, spam.report_source_item_ID, 10)">Delete item</span>
+	  			<span class="report-action-button" ng-click="ignore(spam.report_ID, spam.report_source_item_ID, 10)">Ignore</span>
+	  		</div>
+  		</div>
+
+
+  		<!--REPORTERS -->
+  		<div ng-if="spam.reporters.length > 0 && spam.reporters != null">
+		<div class="item item-divider item-divider-admin">Persons who reported this</div>
+			<div class="foodie-box" ng-repeat="foodict in spam.reporters">
+		        <img ng-cache ng-src="{{foodict.foodict_image}}" class="profpic">
+		        <b>{{foodict.foodict_username}}</b><br/>
+		        <span class="name"><span timeago="{{foodict.report_date}}"></span></span>
+		    </div>
+		</div>
+  </ion-content>
+</ion-view>

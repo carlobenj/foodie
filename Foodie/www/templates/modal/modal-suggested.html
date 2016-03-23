@@ -1,0 +1,23 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-assertive">
+    	<h1 class="title">Who to follow</h1>
+    	<button class="button button-clear" ng-click="closeSuggestedModal()">Done</button>
+    </ion-header-bar>
+    <ion-content class="foodie-modal-view" class="pane" ng-controller="SuggestedModalCtrl">
+		    <div class="item item-divider" ng-if="fb_friends.length > 0">Facebook friends who also use Foodie</div>
+    		<div class="foodie-box has-follow-action" ng-repeat="fb_itm in fb_friends">
+				<img ng-cache ng-src="{{fb_itm.foodict_image}}" class="profpic">
+				<b>{{fb_itm.foodict_username}}</b><br/>
+			    <span class="name">{{fb_itm.foodict_full_name}}</span>
+			    <span class="profile-follow-action follow" ng-click="followThis(fb_itm, true)"><i></i></span>
+			</div>
+
+			<div class="item item-divider" ng-if="suggested.length > 0">We <span ng-if="fb_friends.length > 0">also </span>suggest that you follow</div>
+			<div class="foodie-box has-follow-action" ng-repeat="s_itm in suggested">
+				<img ng-cache ng-src="{{s_itm.foodict_image}}" class="profpic">
+				<b>{{s_itm.foodict_full_name}}</b><br/>
+			    <span class="name">{{s_itm.foodict_username}}</span>
+			    <span class="profile-follow-action follow" ng-click="followThis(s_itm, false)"><i></i></span>
+			</div>
+  	</ion-content>
+</ion-modal-view>

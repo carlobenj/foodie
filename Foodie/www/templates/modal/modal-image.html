@@ -1,0 +1,9 @@
+<ion-modal-view class="modal-image">
+	<span class="modal-image-title" ng-bind="newsfeedPosts.post_title"></span>
+	<i class="modal-image-close ion-close" ng-click="closeModalImage()"></i>
+	<div class="post-detail-image-viewer">	
+		<div class="image-holder">
+			<img ng-cache ng-src="{{newsfeedPosts.post_image}}"></img>
+		</div>
+	</div>
+</ion-modal-view>

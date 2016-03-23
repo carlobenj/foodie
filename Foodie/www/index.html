@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/foodict_style.css" rel="stylesheet">
+    <link href="css/fooducer_style.css" rel="stylesheet">
+    <link href="css/admin_style.css" rel="stylesheet">
+    <link href="css/ionic-override.css" rel="stylesheet">
+    <link href="css/jr-crop.css" rel="stylesheet">
+    <!--<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,500italic,900,700' rel='stylesheet' type='text/css'>-->
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="js/lib/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- Global JS -->
+    <script src="js/plugins.js"></script>
+    <script src="js/directive.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers-others.js"></script>
+
+    <!-- Foodict JS -->
+    <script src="js/Foodict/controllers-newsfeed.js"></script>
+    <script src="js/Foodict/controllers-offers.js"></script>
+    <script src="js/Foodict/controllers-notification.js"></script>
+    <script src="js/Foodict/controllers-home.js"></script>
+
+    <!-- Fooducer JS -->
+    <script src="js/Fooducer/controllers-dash.js"></script>
+    <script src="js/Fooducer/controllers-promotion.js"></script>
+    <script src="js/Fooducer/controllers-validate.js"></script>
+    <script src="js/Fooducer/controllers-profile.js"></script>
+
+    <!-- Admin JS -->
+    <script src="js/Admin/controllers-home.js"></script>
+    <script src="js/Admin/controllers-spam.js"></script>
+    <script src="js/Admin/controllers-inappropriate.js"></script>
+    <script src="js/Admin/controllers-offensive.js"></script>
+
+    <!-- App JS -->
+    <script src="js/app.js"></script>
+
+    <!-- Libraries JS -->
+    <script src="js/lib/angular-resource.js"></script>
+    <script src="js/lib/moment.js"></script>
+    <script src="js/lib/qrcode.js"></script>
+    <script src="js/lib/angular-qr.js"></script>    
+    <script src="js/imgcache.js"></script>    
+    <script src="js/readable-range.js"></script>  
+    <script src="js/Chart/Chart.js"></script> 
+    <script src="js/jr-crop.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jqueryui.js"></script>
+    <script src="js/caman.full.min.js"></script>
+    <script src="js/camanig.js"></script>
+  </head>
+  <body ng-app="foodie" animation="slide-left-right-ios7" ng-controller="NavBarCtrl" ng-class="{'navbar-slide-away': slideNav}">
+    <!-- 
+      The nav bar that will be updated as we navigate between views.
+    -->  
+    <ion-nav-bar class="bar-assertive nav-title-slide-ios7 foodie-navbar">
+      <ion-nav-back-button side="left" class="button-icon icon  ion-ios7-arrow-back"></ion-nav-back-button>
+      <!--THIS IS THE MAIN NAVIGATION BAR-->
+      <!-- <div class="bar-assertive bar-header" >  
+        <div class="h1 title"></div>
+      </div> -->
+      <h1 class="title ng-binding" ng-bind-html="title" style="left: 75px; right: 75px;" ng-click="goBack()"></h1>
+
+      <ion-nav-buttons side="right" class="right-buttons">
+        <a class="button button-clear icon ion-ios7-search-strong" ng-click="openSearchModal()" ng-if="RestrictedFor('foodict')"></a>
+        <a class="button button-clear icon ion-compose" ng-click="openComposeModal()" ng-if="RestrictedFor('foodict')"></a>
+        <a class="button button-clear icon ion-log-out" ng-click="logoutThisAcount()" ng-if="RestrictedFor('admin')"></a>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <!-- 
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>
